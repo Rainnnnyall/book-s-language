@@ -71,9 +71,6 @@
 		    }
 		  },
 		methods: {
-			// https://uptownlet.com/portal.php?resid=ZsfxAction.lmxq&lmid=0d5ba1141df443029e46fa0dbcd34357
-			//&openid=ouJlZ5AcVcrPaHKQx4xlf3w1yYWw&
-			//city=%E4%B8%B4%E6%B1%BE%E5%B8%82&adcode=1410
 			async getLan(){
 				let result = await myRequestPost("/portal.php",{
 					resid:"ZsfxAction.lmxq",
@@ -101,6 +98,9 @@
 </script>
 
 <style lang="scss">
+	page{
+		background-color: #fff;
+	}
 	.head_bg {
 		width: 100%;
 		height: 400rpx;
@@ -146,7 +146,6 @@
 		}
 
 		.people {
-			// width: 100px;
 			background-color: #19CAAD;
 			padding: 5px;
 			position: absolute;
@@ -159,6 +158,7 @@
 	}
 
 	.footer {
+		
 		padding: 0 10px;
 		margin-bottom: 50px;
 		.footer_top {

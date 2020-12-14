@@ -12,12 +12,12 @@
 		</view>
 		<view class="song">
 			<view class="audio-wrapper">
-				<audio id="myVideo" :src="neirong.ypurl" class="hidden" @timeupdate="timeupdate" ref="video" @loadedmetadata="loadedmetadata" ></audio>
+				<audio id="myVideo" :src="neirong.ypurl" class="hidden" @timeupdate="timeupdate" ref="video" @loadedmetadata="loadedmetadata"
+				 controls="false"></audio>
 				<view class="audio-number">{{timer}}</view>
 				<!-- @change="sliderChange" -->
-				<slider class="audio-slider"  @change="sliderChange" @changing="sliderChanging"
-				  block-size="16" :min="0" :max="duration" :value="currentTime" activeColor="#19CAAD"
-				 @touchstart="lock= true" @touchend="lock = false" />
+				<slider class="audio-slider" @change="sliderChange" @changing="sliderChanging" block-size="16" :min="0" :max="duration"
+				 :value="currentTime" activeColor="#19CAAD" @touchstart="lock= true" @touchend="lock = false" />
 				<view class="audio-number">{{neirong.sc}}</view>
 			</view>
 			<view class="audio-control-wrapper">
@@ -27,7 +27,7 @@
 				<view class="iconfont icon-1_music83 s">
 
 				</view>
-				<view :class="['icon',isPlay?'icon-play--filled':'icon-pause--outline--filled']" @click="play" >
+				<view :class="['icon',isPlay?'icon-play--filled':'icon-pause--outline--filled']" @click="play">
 
 				</view>
 				<view class="iconfont icon-1_music82 s">
@@ -41,8 +41,12 @@
 		</view>
 		<!-- 介绍 -->
 		<view class="jieshao">
-			<rich-text class="fload" :class="isFload ? 'hide' : 'show'" :nodes="neirong.twhhjs">
-			</rich-text>
+			<!-- #ifdef MP-WEIXIN|H5|APP-PLUS -->
+			<rich-text class="fload" :class="isFload ? 'hide' : 'show'" :nodes="neirong.twhhjs"></rich-text>
+			<!-- #endif -->
+			<!-- #ifdef MP-ALIPAY -->
+			<rich-text class="fload" :class="isFload ? 'hide' : 'show'" :nodes="htmlNodes"></rich-text>
+			<!-- #endif -->
 			<text v-if="isFload" class="iconfont icon-baidishuangjiantouxiangxia" @click="fload"></text>
 		</view>
 		<!-- 书籍信息 -->
@@ -62,13 +66,13 @@
 					</view>
 				</view>
 				<view class="jiaru">
-					<view class="s-top">
-						<text class="iconfont icon-shoucang" :class="flag?'red':''" @click="shoucang"></text>
-						<text class="" :class="flag?'red':''">{{word}}</text>
+					<view class="s-top" @click="shoucang(item.id)">
+						<text class="iconfont icon-shoucang" :class="item.sc?'red':''" ></text>
+						<text class="" :class="item.sc?'red':''" >{{item.sc?"已收藏":"收藏"}}</text>
 					</view>
-					<view class="s-bottom">
-						<text class="iconfont icon-shubao" :class="sflag?'red':''"></text>
-						<text @click="bao" :class="sflag?'red':''">{{jia}}</text>
+					<view class="s-bottom" @click="bao(item.id)" >
+						<text class="iconfont icon-shubao" :class="item.sb?'red':''" ></text>
+						<text :class="item.sb?'red':''">{{item.sb?"已加入":"加入"}}</text>
 					</view>
 				</view>
 			</view>
@@ -92,6 +96,8 @@
 	import {
 		myRequestPost
 	} from "@/utils/zgrequest.js"
+	// 解决支付包 rich-text问题
+	import parse from "@/utils/htmlparser.js"
 	export default {
 		data() {
 			return {
@@ -106,24 +112,24 @@
 				jia: "加书包",
 				lock: false, // 锁
 				status: 1, // 1暂停 2播放
-				currentTime: 0,  //当前进度
+				currentTime: 0, //当前进度
 				duration: 100, // 总进度
 				videoContext: '',
-				isPlay:true
-				
+				isPlay: true,
+				htmlNodes: []
 			}
 
 		},
 		components: {
 			'sunui-grand': sunUiGrand
 		},
-		computed:{
+		computed: {
 			timer() {
 				return calcTimer(this.currentTime)
 			}
 		},
 		created() {
-			 this.audioContext = uni.createAudioContext('myVideo')
+			this.audioContext = uni.createAudioContext('myVideo')
 		},
 		onLoad(options) {
 			this.id = options.id
@@ -134,45 +140,44 @@
 		},
 		methods: {
 			play() {
-				if(this.isPlay){
-					this.status = 2
+				if (this.isPlay) {
 					this.audioContext.play()
-				}else{
+				} else {
 					this.audioContext.pause()
 				}
-				this.isPlay=!this.isPlay
+				this.isPlay = !this.isPlay
 			},
 			// 更新进度条
 			timeupdate(event) {
-				if(this.lock) return; // 锁
-				var currentTime,duration;
-				if(event.detail.detail) {
+				if (this.lock) return; // 锁
+				var currentTime, duration;
+				if (event.detail.detail) {
 					currentTime = event.detail.detail.currentTime
 					duration = event.detail.detail.duration
-				}else {
+				} else {
 					currentTime = event.detail.currentTime
 					duration = event.detail.duration
 				}
 				this.currentTime = currentTime
 				this.duration = duration
 			},
-			
+
 			// 拖动进度条
 			sliderChange(data) {
 				this.audioContext.seek(data.detail.value)
 			},
-			
+
 			//拖动中
 			sliderChanging(data) {
 				this.currentTime = data.detail.value
 			},
-			
+
 			// 视频加载完成
 			loadedmetadata(data) {
 				this.duration = data.detail.duration
 			}
-			
-			
+
+
 			,
 			async getInfo() {
 				let result = await myRequestPost("/portal.php", {
@@ -188,10 +193,9 @@
 						break;
 					}
 				}
-				console.log(this.neirong);
+				console.log(this.neirong, "xxxx");
+				this.htmlNodes = parse(this.neirong.twhhjs)
 			},
-			//https://uptownlet.com/portal.php?resid=ZsfxAction.jptj&lmdgid=009ff2f2b4c249ea827211312e13ed7e&
-			//yhid=651f2613a599426dad75b4b7cbb9395e&city=%E4%B8%B4%E6%B1%BE%E5%B8%82&adcode=1410
 			async getShu() {
 				let result = await myRequestPost("/portal.php", {
 					resid: 'ZsfxAction.jptj',
@@ -207,34 +211,41 @@
 				//改变isFload的状态
 				this.isFload = !this.isFload;
 			},
-			shoucang() {
-				this.flag = !this.flag
-				if (this.word == "收藏") {
-					this.word = "已收藏"
-				} else {
-					this.word = "收藏"
+			shoucang(id) {
+				
+				for(var i=0;i<this.shuji.length;i++){
+					if(id==this.shuji[i].id){
+						this.shuji[i].sc=!this.shuji[i].sc
+					}
 				}
+				// this.flag = !this.flag
+				// if (this.word == "收藏") {
+				// 	this.word = "已收藏"
+				// } else {
+				// 	this.word = "收藏"
+				// }
+				// console.log(e.currentTarget);
 			},
-			bao() {
-				this.sflag = !this.sflag
-				if (this.jia == "加书包") {
-					this.jia = "已加入"
-				} else {
-					this.jia = "加书包"
+			bao(id) {
+				for(var i=0;i<this.shuji.length;i++){
+					if(id==this.shuji[i].id){
+						this.shuji[i].sb=!this.shuji[i].sb
+					}
 				}
 			}
 		}
 	}
+
 	function calcTimer(timer) {
-		if(timer === 0 || typeof timer !== 'number') {
+		if (timer === 0 || typeof timer !== 'number') {
 			return '00:00'
 		}
 		let mm = Math.floor(timer / 60)
 		let ss = Math.floor(timer % 60)
-		if(mm < 10) {
+		if (mm < 10) {
 			mm = '0' + mm
 		}
-		if(ss < 10) {
+		if (ss < 10) {
 			ss = '0' + ss
 		}
 		return mm + ':' + ss
@@ -248,6 +259,10 @@
 
 	.red {
 		color: red;
+	}
+
+	audio {
+		display: none;
 	}
 
 	.content {
@@ -311,7 +326,9 @@
 				height: auto;
 				display: -webkit-box;
 				word-break: break-all;
+				/* #ifdef MP-WEIXIN|H5|APP-PLUS */
 				-webkit-box-orient: vertical;
+				/* #endif */
 				/* 要显示多少行就改变line-clamp的数据,此处折叠起来显示一行*/
 				-webkit-line-clamp: 8;
 				overflow: hidden;
@@ -359,6 +376,7 @@
 				.audio-number {
 					font-size: 14px;
 					line-height: 1;
+					margin-right: 10rpx;
 					color: #19CAAD;
 				}
 
@@ -376,13 +394,16 @@
 				font-family: "iconfont" !important;
 				font-size: 24px;
 				color: #19CAAD;
-				.s{
+
+				.s {
 					font-size: 24px;
 				}
-				.icon-play--filled,.icon-pause--outline--filled {
+
+				.icon-play--filled,
+				.icon-pause--outline--filled {
 					font-size: 34px;
 				}
-				
+
 
 				.icon-xuanze {
 					font-size: 16px;
@@ -454,7 +475,7 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					// background-color: pink;
+					width: 90rpx;					// background-color: pink;
 					text-align: center;
 					font-size: 11px;
 					border-left: 1px dashed #eee;

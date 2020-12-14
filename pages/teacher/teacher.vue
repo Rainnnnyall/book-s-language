@@ -47,7 +47,7 @@
 						<view class="bt">{{item.bt}}</view>
 						<view class="js">{{item.js}}</view>
 						<view class="book" v-for="bitem in item.tslist" :key="bitem.fm">
-							<image :src="`https://uptownlet.com/appendix/image.jspx?id=${bitem.fm}`" mode=""></image>
+							<image :src="`https://uptownlet.com/appendix/image.jspx?id=${bitem.fm}`" mode="widthFix"></image>
 							<view class="jieshao">
 								<view class="tit">{{bitem.sm}}</view>
 								<view class="ting">有{{bitem.zxrd}}人在听</view>
@@ -67,7 +67,7 @@
 						<text>{{item._cuser}}</text>
 					</view>
 					<!-- :class="['zan',item.flag?'red':'nored']" -->
-					<text  class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs">{{item.dzs}} <text class="iconfont icon-zan"></text></text>
+					<text class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs" :class="item.hfs===1?'red':''">{{item.dzs}} <text class="iconfont icon-zan"></text></text>
 				</view>
 				<view class="ping">
 					{{item.yhly}}
@@ -126,13 +126,12 @@
 			if (this.isShua == '') {
 				this.getComment()
 				console.log(this.isShua, "请求哦");
-				// this.comments.flag=false
 			} else {
 				this.comments = uni.getStorageSync("comments")
 				console.log(this.isShua, "缓存");
-				// this.comments.flag=false
+	
 			}
-			
+
 		},
 		onShow() {
 
@@ -175,22 +174,28 @@
 				})
 				this.comments = result.data
 				this.zan = this.comments.dzs
-				console.log(this.comments,"xxxx");
+				console.log(this.comments, "xxxx");
 			},
 			change() {
 				this.page++;
 				this.getQing()
 			},
 			dianzan(item, id) {
-				this.comments.forEach((item) => {
-					if (item.id == id) {
-						item.dzs++
+				for(var i=0;i<this.comments.length;i++){
+					if(id==this.comments[i].id){
+						if(this.comments[i].hfs==0){
+							this.comments[i].hfs=1
+							this.comments[i].dzs++
+						}else{
+							this.comments[i].hfs=0
+							this.comments[i].dzs--
+						}
 					}
-				})
+				}
 				uni.setStorageSync("comments", this.comments)
-
+                console.log(this.comments[1].hfs,"xxxxxxx");
 				this.isShua = true
-				this.comments.flag=true
+				this.comments.flag = true
 				uni.setStorageSync("isShua", this.isShua)
 			},
 			show() {
@@ -226,60 +231,67 @@
 
 <style lang="scss">
 	page {
-		.red{
+
+		.red {
 			color: red;
-		}
-		.nored{
-			color: #666;
 		}
 		background-color: #F8F8F8;
 		width: 750rpx;
 
 		.top {
 			width: 100%;
-			margin-bottom: 50px;
+			margin-bottom: 100rpx;
 
 			.daoread {
-				font-size: 13px;
-				padding: 0 10px;
-				margin-top: 15px;
+				font-size: 26rpx;
+				padding: 0 20rpx;
+				margin-top: 30rpx;
 
 				text:nth-child(1) {
 					font-weight: bold;
-					margin-right: 20px;
+					margin-right: 40rpx;
 					position: relative;
 
 					.bot {
 						display: block;
-						width: 20px;
-						height: 3px;
-						border-radius: 20px;
+						width: 40rpx;
+						height: 6rpx;
+						border-radius: 40rpx;
 						background-color: #4CD964;
 						position: absolute;
-						bottom: -4px;
-						left: 3px;
+						bottom: -8rpx;
+						left: 6rpx;
 					}
 				}
 
 				.sousuo1 {
-					margin: 10px 0 15px;
+					margin: 20rpx 0 30rpx;
 					position: relative;
 
 					.sousuo {
-						height: 25px;
-						margin: 10px auto 0;
+						width: 100%;
+						height: 50rpx;
+						margin: 20rpx auto 0;
 						background-color: #eee;
-						border-radius: 17px;
-						padding: 0px 5px 0px 25px;
+						border-radius: 34rpx;
+						box-sizing: border-box;
+						padding: 0px 10rpx 0px 50rpx;
 						overflow: hidden;
 					}
 
 					.icon-iconfontsousuokuangsousuo {
 						display: inline-block;
-						font-size: 16px;
-						line-height: 25px;
+						font-size: 36rpx;
+						/* #ifdef MP-WEIXIN|H5|APP-PLUS */
 						position: absolute;
-						left: 5px;
+						left: 10rpx;
+						line-height: 50rpx;
+						/* #endif */
+						/* #ifdef MP-ALIPAY */
+						position: absolute;
+						left: 10rpx;
+						top: 24rpx!important;
+						/* #endif */
 					}
 				}
 			}
@@ -287,20 +299,20 @@
 			// 青少年
 
 			.qingtop {
-				font-size: 14px;
-				padding: 0 10px;
+				font-size: 28rpx;
+				padding: 0 20rpx;
 
 				text:nth-child(1) {
 					font-weight: bold;
-					margin-right: 20px;
+					margin-right: 40rpx;
 				}
 
 				text:nth-child(2) {
-					font-size: 13px;
+					font-size: 26rpx;
 					color: #666;
 
 					.icon-zidingyi {
-						font-size: 10px;
+						font-size: 20rpx;
 						font-weight: 300;
 					}
 				}
@@ -309,17 +321,17 @@
 			// 青内容
 			.qingcon {
 				width: 100%;
-				padding: 0 10px;
-				line-height: 21px;
+				padding: 0 20rpx;
+				line-height: 42rpx;
 
 				.tit {
-					font-size: 14px;
+					font-size: 28rpx;
 					color: #333333;
 				}
 
 				.people,
 				.ting {
-					font-size: 12px;
+					font-size: 24rpx;
 					color: #666666;
 				}
 
@@ -333,7 +345,7 @@
 					display: flex;
 
 					.left {
-						margin-right: 10px;
+						margin-right: 20rpx;
 
 						.q-left {
 							position: relative;
@@ -345,7 +357,7 @@
 
 							.img {
 								position: absolute;
-								left: -7px;
+								left: -14rpx;
 								top: 0;
 								width: 120rpx;
 								height: 120rpx;
@@ -353,8 +365,8 @@
 
 							.tingshu {
 								position: absolute;
-								right: 13px;
-								bottom: 4px;
+								right: 26rpx;
+								bottom: 8rpx;
 								color: #F5F5F5;
 							}
 						}
@@ -367,40 +379,40 @@
 
 				.huan {
 					width: 710rpx;
-					height: 35px;
-					border-radius: 15px;
+					height: 75rpx;
+					border-radius: 30rpx;
 					background-color: #eee;
 					text-align: center;
-					line-height: 35px;
+					line-height: 70rpx;
 					font-size: 14px;
 					color: #666;
-					margin-top: 10px;
+					margin-top: 20rpx;
 
 				}
 
 			}
 
 			.hotread {
-				margin: 8px 0;
+				margin: 16rpx 0;
 				font-weight: bold;
-				font-size: 14px;
-				padding: 10px;
+				font-size: 28rpx;
+				padding: 20rpx;
 			}
 
 			// 热门导读
 			.beijing {
 				width: 350rpx;
-				height: 310px;
+				height: 620rpx;
 				background-color: #eee;
-				border-top-right-radius: 15px;
-				border-bottom-right-radius: 15px;
+				border-top-right-radius: 30rpx;
+				border-bottom-right-radius: 30rpx;
 
 				.scroll {
 					width: 750rpx;
 					display: flex;
 					white-space: nowrap;
 					// background-color: red;
-					border-radius: 15px;
+					border-radius: 30rpx;
 
 					// position: fixed;
 					//                left: 0;
@@ -410,44 +422,44 @@
 						z-index: 1000;
 						display: inline-block;
 						// height: 300px;
-						margin-left: 10px;
-						margin-right: 10px;
+						margin-left: 20rpx;
+						margin-right: 20rpx;
 						width: 400rpx;
 						background-color: #FFFFFF;
-						border-radius: 15px;
-						padding: 10px;
+						border-radius: 30rpx;
+						padding: 20rpx;
 						box-sizing: border-box;
-						box-shadow: 0 0 10px #E5E5E5;
+						box-shadow: 0 0 20rpx #E5E5E5;
 
 						.bt {
-							font-size: 14px;
+							font-size: 28rpx;
 						}
 
 						.js {
-							font-size: 12px;
-							margin-top: 10rpx;
+							font-size: 24rpx;
+							margin-top: 20rrpx;
 							color: #999999;
 						}
 
 						.book {
 							display: flex;
-							margin-top: 15px;
-							line-height: 20px;
+							margin-top: 30rpx;
+							line-height: 40rpx;
 
 							image {
-								width: 100rpx;
-								height: 120rpx;
-								margin-right: 10px;
+								width: 90rpx;
+								// height: 120rpx;
+								margin-right: 20rpx;
 							}
 
 							.tit {
-								font-size: 14px;
+								font-size: 28rpx;
 								color: #333333;
 							}
 
 							.time,
 							.ting {
-								font-size: 12px;
+								font-size: 24rpx;
 								color: #666666;
 							}
 						}
@@ -484,7 +496,8 @@
 					}
 
 					.zan {
-						font-size: 12px; 
+						font-size: 12px;
+
 						text {
 							margin-left: 3px;
 						}

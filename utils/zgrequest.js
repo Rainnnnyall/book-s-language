@@ -3,9 +3,14 @@ const baseUrl = "https://uptownlet.com";
 // 请求时传来两个参数,url为后面要拼接的路劲,data为参数
 export function myRequestGet(url, data) {
 	return new Promise((resolve, reject) => {
+		var requestUrl=baseUrl+url;
+		// #ifdef H5
+		var requestUrl=url;
+		// #endif
+		
 		// 发请求
 		uni.request({
-			url: baseUrl + url,
+			url:  requestUrl,
 			method: "GET",
 			data: data,
 			// res为从服务器请求来的数据
@@ -27,9 +32,13 @@ export function myRequestGet(url, data) {
 // post请求要传参数  {name="张三",age=18}======>转为"name=张三&age=18"
 export function myRequestPost(url, data) {
 	return new Promise((resolve, reject) => {
+		var requestUrl=baseUrl+url;
+		// #ifdef H5
+		var requestUrl=url;
+		// #endif
 		// 发请求
 		uni.request({
-			url: baseUrl + url,
+			url: requestUrl,
 			method: "POST",
 			data: data,
 			// post要设置请求头,要在 fiddler中查看请求头是什么

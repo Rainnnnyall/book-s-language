@@ -33,6 +33,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/shou/shou",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收藏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/shoucang/shoucang",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

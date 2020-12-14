@@ -1,17 +1,6 @@
 <template>
 	<view class="wrap">
-		<!--  -->
-		<view class="fload" :class="isFload ? 'hide' : 'show'">
-				散文是一个汉语词汇，拼音是sǎn wén。
-一指文采焕发；二指犹行文；三指文体名。散文是一种抒发作者真情实感、
-散文是一个汉语词汇，拼音是sǎn wén。一指文采焕发；
-二指犹行文；三指文体名。散文是一种抒发作者真情实感、
-写作方式灵活的记叙类文学体裁。“散文”一词大概出现在北宋太平...
-		</view>
-		
-		<!-- 此处用了iconfont图标，自行处理或换成自己的图标-->
-		<text v-if="isFload"  class="iconfont icon-bofang" @click="fload"></text>
-		<text v-if="!isFload" class="iconfont icon-fenxiang" @click="fload"></text>
+		<navigator url="../teacher/teacher">去名师导读</navigator>
 	</view>
 	
 </template>
