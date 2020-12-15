@@ -27,7 +27,7 @@
 .top {
   position: relative;
   width: 100%;
-  height: 350rpx;
+  height: 360rpx;
 }
 .top .top-bg {
     position: absolute;
@@ -113,5 +113,600 @@
     top: 10rpx;
     width: 130rpx;
     height: 130rpx;
+}
+.top .badge-wall {
+    position: absolute;
+    width: 150rpx;
+    height: 35rpx;
+    top: 135rpx;
+    right: 30rpx;
+    border-radius: 20px;
+    background-color: #76E4D2;
+}
+.top .badge-wall .icon-huizhang-copy {
+      position: absolute;
+      left: 10rpx;
+      top: -17rpx;
+      font-size: 20rpx;
+      color: #008B8B;
+}
+.top .badge-wall .badgeWall {
+      position: absolute;
+      left: 39rpx;
+      top: 3rpx;
+      font-size: 25rpx;
+      line-height: 35rpx;
+      color: white;
+}
+.top .badge-wall .icon-xiangyoujiantou {
+      position: absolute;
+      right: 15rpx;
+      font-size: 25rpx;
+      color: white;
+      top: -17rpx;
+}
+.top .read-left {
+    position: absolute;
+    width: 375rpx;
+    height: 50rpx;
+    left: 0;
+    top: 190rpx;
+}
+.top .read-left .left-div {
+      position: absolute;
+      width: 17rpx;
+      height: 17rpx;
+      background-color: pink;
+      top: 16.5rpx;
+      left: 60rpx;
+}
+.top .read-left .yueduliang {
+      position: absolute;
+      font-size: 35rpx;
+      line-height: 50rpx;
+      left: 100rpx;
+      color: white;
+}
+.top .read-right {
+    position: absolute;
+    width: 375rpx;
+    height: 50rpx;
+    right: 0;
+    top: 190rpx;
+}
+.top .read-right .right-div {
+      position: absolute;
+      width: 17rpx;
+      height: 17rpx;
+      background-color: pink;
+      top: 16.5rpx;
+      left: 60rpx;
+}
+.top .read-right .yuedutime {
+      position: absolute;
+      font-size: 35rpx;
+      line-height: 50rpx;
+      left: 100rpx;
+      color: white;
+}
+.top .sum-one {
+    position: absolute;
+    left: 0;
+    bottom: 0rpx;
+    width: 187.5rpx;
+    height: 100rpx;
+}
+.top .sum-one .top-num {
+      position: absolute;
+      top: 5rpx;
+      right: 70rpx;
+      font-size: 40rpx;
+      color: white;
+}
+.top .sum-one .bottom-text {
+      position: absolute;
+      bottom: 10rpx;
+      font-size: 27rpx;
+      right: 50rpx;
+      color: #DFF5F0;
+}
+.top .sum-one .linear {
+      position: absolute;
+      right: 0;
+      top: 33.33rpx;
+      height: 33.33rpx;
+      width: 2rpx;
+      border-right: 1px solid #C2C2C2;
+}
+.top .sum-two {
+    position: absolute;
+    left: 187.5rpx;
+    bottom: 0rpx;
+    width: 187.5rpx;
+    height: 100rpx;
+}
+.top .sum-two .top-num {
+      position: absolute;
+      top: 5rpx;
+      right: 80rpx;
+      font-size: 40rpx;
+      color: white;
+}
+.top .sum-two .bottom-text {
+      position: absolute;
+      bottom: 10rpx;
+      font-size: 27rpx;
+      right: 50rpx;
+      color: #DFF5F0;
+}
+.top .sum-two .linear {
+      position: absolute;
+      right: 0;
+      top: 33.33rpx;
+      height: 33.33rpx;
+      width: 2rpx;
+      border-right: 1px solid #C2C2C2;
+}
+.top .sum-three {
+    position: absolute;
+    left: 375rpx;
+    bottom: 0rpx;
+    width: 187.5rpx;
+    height: 100rpx;
+}
+.top .sum-three .top-num {
+      position: absolute;
+      top: 5rpx;
+      right: 80rpx;
+      font-size: 40rpx;
+      color: white;
+}
+.top .sum-three .bottom-text {
+      position: absolute;
+      bottom: 10rpx;
+      font-size: 27rpx;
+      right: 60rpx;
+      color: #DFF5F0;
+}
+.top .sum-three .linear {
+      position: absolute;
+      right: 0;
+      top: 33.33rpx;
+      height: 33.33rpx;
+      width: 2rpx;
+      border-right: 1px solid #C2C2C2;
+}
+.top .sum-four {
+    position: absolute;
+    right: 0;
+    bottom: 0rpx;
+    width: 187.5rpx;
+    height: 100rpx;
+}
+.top .sum-four .top-num {
+      position: absolute;
+      top: 5rpx;
+      right: 80rpx;
+      font-size: 40rpx;
+      color: white;
+}
+.top .sum-four .bottom-text {
+      position: absolute;
+      bottom: 10rpx;
+      font-size: 27rpx;
+      right: 50rpx;
+      color: #DFF5F0;
+}
+.card {
+  width: 93%;
+  height: 180rpx;
+  background-color: #F7F7F7;
+  margin: 0px auto;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #CCCCCC;
+  position: relative;
+}
+.card .left-line {
+    position: absolute;
+    width: 6px;
+    height: 70rpx;
+    left: -3px;
+    top: 55rpx;
+    background-color: salmon;
+    border-radius: 10px;
+}
+.card .text-top {
+    position: absolute;
+    top: 30rpx;
+    left: 30rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+}
+.card .text-center {
+    position: absolute;
+    top: 75rpx;
+    left: 30rpx;
+    font-size: 18rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+    color: #555555;
+}
+.card .divider {
+    position: absolute;
+    width: 400rpx;
+    height: 1rpx;
+    border-top: 1px dashed #cccccc;
+    top: 110rpx;
+    left: 30rpx;
+}
+.card .text-bottom {
+    position: absolute;
+    bottom: 30rpx;
+    left: 30rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+    color: #555555;
+}
+.card .circle {
+    position: absolute;
+    top: 20rpx;
+    right: 50rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background: -webkit-linear-gradient(left, limegreen, lime, springgreen);
+}
+.card .circle .inner-circle {
+      position: absolute;
+      width: 72rpx;
+      height: 72rpx;
+      left: 14rpx;
+      top: 14rpx;
+      background-color: #F7F7F7;
+      border-radius: 50%;
+}
+.card .circle .inner-circle .inner-center {
+        position: absolute;
+        width: 14rpx;
+        height: 18rpx;
+        left: 29rpx;
+        top: 27rpx;
+        border-radius: 30px;
+        background: -webkit-linear-gradient(left, limegreen, lime, springgreen);
+}
+.card .circle .inner-circle .inner-center .linear {
+          position: absolute;
+          width: 6rpx;
+          height: 10rpx;
+          top: 4rpx;
+          left: 4rpx;
+          background-color: #F7F7F7;
+          border-radius: 10px;
+}
+.card .history {
+    position: absolute;
+    right: 80rpx;
+    bottom: 28rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+}
+.card .icon-xiangyoujiantou {
+    position: absolute;
+    right: 50rpx;
+    bottom: 28rpx;
+    font-size: 20rpx;
+    color: #777777;
+}
+.order-form {
+  position: relative;
+  margin: 10rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.order-form .icon-file-text {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.order-form .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.order-form .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.alert {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.alert .icon-tixing {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.alert .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.alert .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.reading-card {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.reading-card .icon-deng {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.reading-card .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.reading-card .binding {
+    position: absolute;
+    line-height: 100rpx;
+    right: 80rpx;
+    color: #ECAEA0;
+}
+.reading-card .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 22rpx;
+    color: #ECAEA0;
+}
+.book {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.book .icon-xin {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 30rpx;
+    color: #19CAAD;
+}
+.book .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.book .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.join {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.join .icon-shuxie {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.join .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.join .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.record {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.record .icon-qian {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.record .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.record .deposit {
+    position: absolute;
+    line-height: 100rpx;
+    right: 80rpx;
+    color: #ECAEA0;
+}
+.record .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 22rpx;
+    color: #ECAEA0;
+}
+.recommend {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.recommend .icon-AI {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.recommend .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.recommend .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.our {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.our .icon-women {
+    position: absolute;
+    left: 45rpx;
+    top: 23rpx;
+    font-size: 35rpx;
+    color: #19CAAD;
+}
+.our .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.our .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.exchange-code {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.exchange-code .icon-duihuanma {
+    position: absolute;
+    left: 40rpx;
+    top: 23rpx;
+    font-size: 40rpx;
+    color: #19CAAD;
+}
+.exchange-code .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.exchange-code .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.city {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.city .icon-qiehuan {
+    position: absolute;
+    left: 40rpx;
+    top: 23rpx;
+    font-size: 40rpx;
+    color: #19CAAD;
+}
+.city .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.city .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
+}
+.leading-readers {
+  position: relative;
+  margin: 0rpx auto;
+  width: 96%;
+  height: 100rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.leading-readers .icon-fenxiangzhuanfafasongzhijiantouyuanxingshar {
+    position: absolute;
+    left: 40rpx;
+    top: 23rpx;
+    font-size: 40rpx;
+    color: #19CAAD;
+}
+.leading-readers .name {
+    position: absolute;
+    line-height: 100rpx;
+    left: 100rpx;
+    color: #565656;
+}
+.leading-readers .icon-xiangyoujiantou {
+    position: absolute;
+    right: 40rpx;
+    font-size: 40rpx;
+    top: 20rpx;
+    color: #9F9F9F;
 }
 

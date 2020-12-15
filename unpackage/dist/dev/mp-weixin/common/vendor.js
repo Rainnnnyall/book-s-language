@@ -7521,7 +7521,7 @@ module.exports = g;
 /***/ }),
 /* 4 */
 /*!***********************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/pages.json ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/pages.json ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8428,7 +8428,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@^2.0.0-alpha-24420191128001","_id"
 /***/ }),
 /* 7 */
 /*!****************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/pages.json?{"type":"style"} ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/pages.json?{"type":"style"} ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8439,7 +8439,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 /* 8 */
 /*!***************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/pages.json?{"type":"stat"} ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/pages.json?{"type":"stat"} ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8561,7 +8561,7 @@ function normalizeComponent (
 /***/ }),
 /* 15 */
 /*!**************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/static/fonts/iconfont.css ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/fonts/iconfont.css ***!
   \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8571,7 +8571,7 @@ function normalizeComponent (
 /***/ }),
 /* 16 */
 /*!*********************************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/static/font_2269866_wp049iq93mj/iconfont.css ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2269866_wp049iq93mj/iconfont.css ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8581,7 +8581,7 @@ function normalizeComponent (
 /***/ }),
 /* 17 */
 /*!**********************************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/static/font_2269987_04jna0qkj44z/iconfont.css ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2269987_04jna0qkj44z/iconfont.css ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8591,7 +8591,7 @@ function normalizeComponent (
 /***/ }),
 /* 18 */
 /*!**********************************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/static/font_2269997_0gw2sqcvvpqn/iconfont.css ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2269997_0gw2sqcvvpqn/iconfont.css ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -8601,7 +8601,7 @@ function normalizeComponent (
 /***/ }),
 /* 19 */
 /*!********************************************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/static/font_2270004_60akpa6aly/iconfont.css ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2270004_60akpa6aly/iconfont.css ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9406,7 +9406,7 @@ if (hadRuntime) {
 /***/ }),
 /* 29 */
 /*!*******************************************************************!*\
-  !*** C:/Users/Dell-pc/Desktop/reading/reading/utils/zgrequest.js ***!
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/utils/zgrequest.js ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -9454,6 +9454,184 @@ function myRequestPost(url, data) {
 
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2271243_yy28nhf5tkf/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 67 */,
+/* 68 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2271359_bku5e6zmlvi/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 69 */,
+/* 70 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272538_3jvc2atyrob/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 71 */,
+/* 72 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272576_wl4eo6cheuj/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 73 */,
+/* 74 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272589_2uy2awj0w2f/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 75 */,
+/* 76 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272599_79muub4t39u/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 77 */,
+/* 78 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272604_13xw5ll9llx/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 79 */,
+/* 80 */
+/*!*******************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272608_pjn3ca12y/iconfont.css ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 81 */,
+/* 82 */
+/*!********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272615_qbfbndn9qx/iconfont.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 83 */,
+/* 84 */
+/*!********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272616_r56djo2cv3/iconfont.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 85 */,
+/* 86 */
+/*!********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272620_u0y0sfn1rh/iconfont.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 87 */,
+/* 88 */
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272623_p4il842zl2l/iconfont.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 89 */,
+/* 90 */
+/*!********************************************************************************************!*\
+  !*** C:/Users/Dell-pc/Desktop/book-s-language/static/font_2272628_ct4h3hgh8c/iconfont.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 ]]);
