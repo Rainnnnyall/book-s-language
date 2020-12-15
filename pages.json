@@ -1,0 +1,35 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "书语"
+			}
+		}, {
+			"path": "pages/recommend/recommend",
+			"style": {}
+		}, {
+			"path": "pages/hotsd/hotsd",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "书单详情",
+				"navigationBarBackgroundColor": "#F8F8F8",
+				"backgroundColor": "#F8F8F8"
+			}
+		}, {
+			"path": "pages/details/details",
+			"style": {
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "图书详情",
+				"navigationBarBackgroundColor": "#F8F8F8",
+				"backgroundColor": "#F8F8F8"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "书语",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

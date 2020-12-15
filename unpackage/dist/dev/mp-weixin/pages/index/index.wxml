@@ -1,0 +1,1 @@
+<view><block wx:for="{{books}}" wx:for-item="item" wx:for-index="__i0__" wx:key="*this"><button data-event-opts="{{[['tap',[['gohotsd',['$0'],[[['books','',__i0__,'id']]]]]]]}}" bindtap="__e">{{item.bt}}</button></block></view>

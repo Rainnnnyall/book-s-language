@@ -1,0 +1,91 @@
+.hot .header {
+  width: 750rpx;
+}
+.hot .bt {
+  font-size: 16px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 5px;
+}
+.hot .js {
+  color: #C0C0C0;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #C0C0C0;
+}
+.hot .main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #C0C0C0;
+}
+.hot .main .ts {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.hot .main .ts .left {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: inline-block;
+}
+.hot .main .ts .left image {
+  width: 180rpx;
+  margin: 10px;
+}
+.hot .main .ts .right {
+  width: 520rpx;
+  margin: 10rpx auto;
+  display: inline-block;
+}
+.hot .main .ts .right .sm {
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.hot .main .ts .right .zz {
+  margin-bottom: 10px;
+}
+.hot .main .ts .right .nrjj {
+  color: #cccccc;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+.hot .main .ts .right .kejie {
+  color: #92E6D8;
+  border: 1px solid #92E6D8;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+.hot .main .ts .right .bukejie {
+  color: pink;
+  border: 1px solid pink;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
