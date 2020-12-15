@@ -158,7 +158,7 @@ var _zgrequest = __webpack_require__(/*! @/utils/zgrequest.js */ 24);function _i
 
   },
   onLoad: function onLoad(options) {
-    console.log(options);
+    // console.log(options)
     this.getSwiper(options);
 
   },
@@ -170,12 +170,12 @@ var _zgrequest = __webpack_require__(/*! @/utils/zgrequest.js */ 24);function _i
                   this.list = result.data;
                   this.ts = result.data.ts;
                 }
-                console.log(this.list, "99999");
-                console.log(this.ts, "222222");case 6:case "end":return _context.stop();}}}, _callee, this);}));function getSwiper(_x) {return _getSwiper.apply(this, arguments);}return getSwiper;}(),
+                // console.log(this.list, "99999")
+                console.log(this.ts, "222222");case 5:case "end":return _context.stop();}}}, _callee, this);}));function getSwiper(_x) {return _getSwiper.apply(this, arguments);}return getSwiper;}(),
 
-    godetails: function godetails() {
+    godetails: function godetails(item) {
       uni.navigateTo({
-        url: "../details/details" });
+        url: "../details/details?tsid=".concat(item.tsid, "&kjsl=").concat(item.kjsl) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

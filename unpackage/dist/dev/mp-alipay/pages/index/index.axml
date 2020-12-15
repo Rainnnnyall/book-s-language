@@ -1,1 +1,1 @@
-<view class="content"><image class="logo" src="/static/logo.png"></image><view class="text-area"><text class="title">{{title}}</text></view></view>
+<view><block a:for="{{books}}" a:for-item="item" a:for-index="__i0__" a:key="*this"><button data-event-opts="{{[['tap',[['gohotsd',['$0'],[[['books','',__i0__,'id']]]]]]]}}" onTap="__e">{{item.bt}}</button></block></view>

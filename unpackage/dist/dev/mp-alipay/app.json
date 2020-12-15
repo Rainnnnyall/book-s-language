@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/recommend/recommend",
+    "pages/hotsd/hotsd",
+    "pages/details/details"
   ],
   "subPackages": [],
   "window": {
-    "defaultTitle": "uni-app",
+    "defaultTitle": "书语",
     "titleBarColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

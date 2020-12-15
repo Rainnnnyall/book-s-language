@@ -5,9 +5,9 @@
 			<text class="bt">{{list.bt+'【'+list._lx+'】'}}</text>
 			<text class="js">{{list.js}}</text>
 			<view class="main">
-				<view class="ts" v-for="item in ts" :key="item.tsid" @click="godetails">
+				<view class="ts" v-for="item in ts" :key="item.tsid" @click="godetails(item)">
 					<view class="left">
-						<image :src="`https://uptownlet.com/appendix/image.jspx?id={{item.fm}}`" mode="widthFix"></image>
+						<image :src="`https://uptownlet.com/appendix/image.jspx?id={{item.fm}}`" mode="aspectFit"></image>
 					</view>
 					<view class="right">
 						<text class="sm">{{item.sm}}\n</text>
@@ -34,7 +34,7 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options)
+			// console.log(options)
 			this.getSwiper(options);
 
 		},
@@ -46,12 +46,12 @@
 					this.list = result.data
 					this.ts = result.data.ts
 				}
-				console.log(this.list, "99999")
+				// console.log(this.list, "99999")
 				console.log(this.ts, "222222")
 			},
-			godetails() {
+			godetails(item) {
 				uni.navigateTo({
-					url: `../details/details`
+					url: `../details/details?tsid=${item.tsid}&kjsl=${item.kjsl}`
 				})
 			}
 		}
@@ -84,30 +84,31 @@
 
 		.main {
 			display: flex;
+			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
 			width: 100%;
 			border-bottom: 1px solid #C0C0C0;
-
 			.ts {
 				margin-bottom: 10px;
 				border-bottom: 1px solid #ccc;
-
 				.left {
-					flex: 1;
-					display: inline-block;
-
+					display: inline-flex;
 					image {
 						width: 180rpx;
-						margin: 10px;
+						height: 113px;
+						margin: 5px;
+						
 					}
 				}
 
 				.right {
 					width: 520rpx;
-					margin: 10rpx auto;
-					display: inline-block;
-
+					margin: 5rpx auto;
+					display: inline-flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					vertical-align: top;
 					.sm {
 						font-weight: bold;
 						margin-bottom: 20rpx;
@@ -118,26 +119,31 @@
 					}
 
 					.nrjj {
+						width: 520rpx;
 						color: #cccccc;
 						text-overflow: -o-ellipsis-lastline;
 						overflow: hidden;
 						text-overflow: ellipsis;
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
-						line-clamp: 3;
+						line-clamp: 2;
 						-webkit-box-orient: vertical;
 						margin-bottom: 10px;
 					}
 
 					.kejie {
+						width: 100rpx;
 						color: #92E6D8;
 						border: 1px solid #92E6D8;
 						border-radius: 4px;
 						margin-bottom: 5px;
 						padding: 2px;
+						text-align: center;
 					}
 
 					.bukejie {
+						width: 150rpx;
+						text-align: center;
 						color: pink;
 						border: 1px solid pink;
 						border-radius: 4px;
