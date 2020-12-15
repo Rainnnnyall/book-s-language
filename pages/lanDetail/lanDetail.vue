@@ -3,7 +3,8 @@
 		<view class="head_bg">
 			<image class="back" src="https://uptownlet.com/appendix/image.jspx?id=0e992f01442f4730af813d5bb97a3015"></image>
 			<image class="ground" src="https://uptownlet.com/appendix/image.jspx?id=3b185a9113b147ffa606e413a4085907"></image>
-			<text class="iconfont icon-fenxiang" ></text>
+			
+			<button class="btn" open-type="share"><text class="iconfont icon-fenxiang" ></text></button>
 			<view class="title">
 				<text>{{title}}</text>
 				<text>纸享读书</text>
@@ -61,15 +62,15 @@
 			this.title=options.bt
 			this.getLan()
 		},
-		onShareAppMessage(res) {
-		    if (res.from === 'button') {// 来自页面内分享按钮
-		      console.log(res.target)
-		    }
-		    return {
-		      title: '分享',
-		      path: '/pages/index/index'
-		    }
-		  },
+		// onShareAppMessage(res) {
+		//     if (res.from === 'button') {// 来自页面内分享按钮
+		//       console.log(res.target)
+		//     }
+		//     return {
+		//       title: '分享',
+		//       path: '/pages/index/index'
+		//     }
+		//   },
 		methods: {
 			async getLan(){
 				let result = await myRequestPost("/portal.php",{
@@ -106,10 +107,18 @@
 		height: 400rpx;
 		position: relative;
 		font-size: 14px;
-        .icon-fenxiang{
+		.btn::after{
+			border: none;
+		}
+		.btn{
+			background-color:rgba(255,255,255,0)!important;
+			width: 80rpx;
 			position: absolute;
-			right: 20px;
-			top: 20px;
+			top: 10rpx;
+			right: 10rpx;
+		}
+		
+        .icon-fenxiang{
 			color: #fff;
 			font-size: large;
 		}

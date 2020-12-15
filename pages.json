@@ -43,7 +43,16 @@
             
         }
         ,{
-            "path" : "pages/shoucang/shoucang",
+            "path" : "pages/pinglun/pinglun",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/xunzhang/xunzhang",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",

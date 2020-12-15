@@ -66,12 +66,12 @@
 					</view>
 				</view>
 				<view class="jiaru">
-					<view class="s-top" @click="shoucang(item.id)">
-						<text class="iconfont icon-shoucang" :class="item.sc?'red':''" ></text>
-						<text class="" :class="item.sc?'red':''" >{{item.sc?"已收藏":"收藏"}}</text>
+					<view class="s-top" @click="shoucang(item.id,item)">
+						<text class="iconfont icon-shoucang" :class="item.sc?'red':''"></text>
+						<text class="" :class="item.sc?'red':''">{{item.sc?"已收藏":"收藏"}}</text>
 					</view>
-					<view class="s-bottom" @click="bao(item.id)" >
-						<text class="iconfont icon-shubao" :class="item.sb?'red':''" ></text>
+					<view class="s-bottom" @click="bao(item.id)">
+						<text class="iconfont icon-shubao" :class="item.sb?'red':''"></text>
 						<text :class="item.sb?'red':''">{{item.sb?"已加入":"加入"}}</text>
 					</view>
 				</view>
@@ -91,6 +91,9 @@
 </template>
 
 <script>
+	import {
+		mapMutations
+	} from 'vuex'
 	import sunUiGrand from '../../components/other/sunui-grand/sunui-grand.vue';
 	// 发请求，拿数据
 	import {
@@ -98,6 +101,9 @@
 	} from "@/utils/zgrequest.js"
 	// 解决支付包 rich-text问题
 	import parse from "@/utils/htmlparser.js"
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -105,6 +111,7 @@
 				page: '',
 				neirong: {},
 				shuji: [],
+				storage: [],
 				isFload: true,
 				flag: false,
 				sflag: false,
@@ -116,7 +123,9 @@
 				duration: 100, // 总进度
 				videoContext: '',
 				isPlay: true,
-				htmlNodes: []
+				htmlNodes: [],
+				isShu: '',
+				ahah: []
 			}
 
 		},
@@ -126,7 +135,10 @@
 		computed: {
 			timer() {
 				return calcTimer(this.currentTime)
-			}
+			},
+			...mapState({
+				carts: 'carts'
+			})
 		},
 		created() {
 			this.audioContext = uni.createAudioContext('myVideo')
@@ -136,9 +148,17 @@
 			this.page = options.page
 			console.log(this.id, this.page);
 			this.getInfo();
-			this.getShu()
+			this.getShu();
+
+
 		},
 		methods: {
+			...mapMutations({
+				addCarts: 'addCarts'
+			}),
+			...mapMutations({
+				clearCarts: "clearCarts"
+			}),
 			play() {
 				if (this.isPlay) {
 					this.audioContext.play()
@@ -177,7 +197,6 @@
 				this.duration = data.detail.duration
 			}
 
-
 			,
 			async getInfo() {
 				let result = await myRequestPost("/portal.php", {
@@ -205,31 +224,39 @@
 					adcode: 1410
 				})
 				this.shuji = result.data.data
+
+				for (var i = 0; i < this.shuji.length; i++) {
+					for (var j = 0; j < this.carts.length; j++) {
+						if (this.shuji[i].id == this.carts[j].id) {
+							this.shuji[i].sc = true
+						}
+					}
+				}
 				console.log(this.shuji, "dsdsd");
 			},
 			fload() {
-				//改变isFload的状态
 				this.isFload = !this.isFload;
 			},
-			shoucang(id) {
-				
-				for(var i=0;i<this.shuji.length;i++){
-					if(id==this.shuji[i].id){
-						this.shuji[i].sc=!this.shuji[i].sc
+			shoucang(id, shu) {
+				for (var i = 0; i < this.shuji.length; i++) {
+					if (id == this.shuji[i].id) {
+						var shu = this.shuji[i]
+						if (this.shuji[i].sc) {
+							this.clearCarts(shu)
+						} else {
+							this.addCarts(shu)
+						}
+
+						this.shuji[i].sc = !this.shuji[i].sc
+						// uni.setStorageSync("shuji", this.shuji)
 					}
 				}
-				// this.flag = !this.flag
-				// if (this.word == "收藏") {
-				// 	this.word = "已收藏"
-				// } else {
-				// 	this.word = "收藏"
-				// }
-				// console.log(e.currentTarget);
+				console.log(id, shu, "xxxxxx");
 			},
 			bao(id) {
-				for(var i=0;i<this.shuji.length;i++){
-					if(id==this.shuji[i].id){
-						this.shuji[i].sb=!this.shuji[i].sb
+				for (var i = 0; i < this.shuji.length; i++) {
+					if (id == this.shuji[i].id) {
+						this.shuji[i].sb = !this.shuji[i].sb
 					}
 				}
 			}
@@ -316,9 +343,6 @@
 
 		.jieshao {
 			width: 100%;
-			// display: flex;
-			// justify-content: space-between;
-			// margin: 0 auto;
 			position: relative;
 
 			.fload {
@@ -438,6 +462,9 @@
 					.tit {
 						font-size: 14px;
 						color: #333333;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
 					}
 
 					.name {
@@ -475,7 +502,7 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					width: 90rpx;					// background-color: pink;
+					width: 90rpx; // background-color: pink;
 					text-align: center;
 					font-size: 11px;
 					border-left: 1px dashed #eee;

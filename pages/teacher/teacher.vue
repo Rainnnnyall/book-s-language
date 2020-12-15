@@ -67,7 +67,8 @@
 						<text>{{item._cuser}}</text>
 					</view>
 					<!-- :class="['zan',item.flag?'red':'nored']" -->
-					<text class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs" :class="item.hfs===1?'red':''">{{item.dzs}} <text class="iconfont icon-zan"></text></text>
+					<text class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs" :class="item.hfs===1?'red':''">{{item.dzs}}
+						<text class="iconfont icon-zan"></text></text>
 				</view>
 				<view class="ping">
 					{{item.yhly}}
@@ -86,7 +87,7 @@
 				</view>
 				<view class="shi">
 					<text>{{item.cdate}}</text>
-					<text><text class="iconfont icon-pinglun"></text>评论</text>
+					<text  @click="speack(item.id)"><text class="iconfont icon-pinglun"></text>评论</text>
 				</view>
 			</view>
 			<view class="pinglun" @click="show"><text class="iconfont icon-pinglun1"></text></view>
@@ -129,7 +130,7 @@
 			} else {
 				this.comments = uni.getStorageSync("comments")
 				console.log(this.isShua, "缓存");
-	
+
 			}
 
 		},
@@ -181,19 +182,19 @@
 				this.getQing()
 			},
 			dianzan(item, id) {
-				for(var i=0;i<this.comments.length;i++){
-					if(id==this.comments[i].id){
-						if(this.comments[i].hfs==0){
-							this.comments[i].hfs=1
+				for (var i = 0; i < this.comments.length; i++) {
+					if (id == this.comments[i].id) {
+						if (this.comments[i].hfs == 0) {
+							this.comments[i].hfs = 1
 							this.comments[i].dzs++
-						}else{
-							this.comments[i].hfs=0
+						} else {
+							this.comments[i].hfs = 0
 							this.comments[i].dzs--
 						}
 					}
 				}
 				uni.setStorageSync("comments", this.comments)
-                console.log(this.comments[1].hfs,"xxxxxxx");
+				console.log(this.comments[1].hfs, "xxxxxxx");
 				this.isShua = true
 				this.comments.flag = true
 				uni.setStorageSync("isShua", this.isShua)
@@ -224,6 +225,12 @@
 						duration: 300
 					});
 				}).exec()
+			},
+			speack(id){
+				console.log("pinglun");
+				uni.navigateTo({
+					url: `/pages/pinglun/pinglun?id=${id}`
+				})
 			}
 		}
 	}
@@ -235,6 +242,7 @@
 		.red {
 			color: red;
 		}
+
 		background-color: #F8F8F8;
 		width: 750rpx;
 
@@ -290,7 +298,7 @@
 						/* #ifdef MP-ALIPAY */
 						position: absolute;
 						left: 10rpx;
-						top: 24rpx!important;
+						top: 24rpx !important;
 						/* #endif */
 					}
 				}
@@ -323,7 +331,8 @@
 				width: 100%;
 				padding: 0 20rpx;
 				line-height: 42rpx;
-
+				margin-top: 10px;
+				
 				.tit {
 					font-size: 28rpx;
 					color: #333333;
@@ -402,7 +411,7 @@
 			// 热门导读
 			.beijing {
 				width: 350rpx;
-				height: 620rpx;
+				height: 640rpx;
 				background-color: #eee;
 				border-top-right-radius: 30rpx;
 				border-bottom-right-radius: 30rpx;
@@ -411,44 +420,41 @@
 					width: 750rpx;
 					display: flex;
 					white-space: nowrap;
-					// background-color: red;
 					border-radius: 30rpx;
-
-					// position: fixed;
-					//                left: 0;
 					.sitem {
-
-						margin-top: 20rpx;
 						z-index: 1000;
 						display: inline-block;
-						// height: 300px;
+						// height: 585rpx;
 						margin-left: 20rpx;
 						margin-right: 20rpx;
-						width: 400rpx;
+						width: 420rpx;
 						background-color: #FFFFFF;
 						border-radius: 30rpx;
 						padding: 20rpx;
 						box-sizing: border-box;
 						box-shadow: 0 0 20rpx #E5E5E5;
-
+                        vertical-align: baseline;
+						
 						.bt {
 							font-size: 28rpx;
 						}
 
 						.js {
 							font-size: 24rpx;
-							margin-top: 20rrpx;
+							margin-top: 10rpx;
 							color: #999999;
 						}
 
 						.book {
+							// background-color: pink;
 							display: flex;
-							margin-top: 30rpx;
+							margin-top: 20rpx;
 							line-height: 40rpx;
-
+                            height: 70px;
+							vertical-align:bottom;
 							image {
-								width: 90rpx;
-								// height: 120rpx;
+								width: 100rpx;
+								height: 140rpx;
 								margin-right: 20rpx;
 							}
 
@@ -527,8 +533,9 @@
 
 						image {
 							width: 40px;
-							height: 40px;
+							height: 50px;
 							margin-right: 6px;
+							
 						}
 
 						text:nth-child(1) {
