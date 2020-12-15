@@ -22,7 +22,13 @@
 				"navigationBarTitleText": "收音机"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/musicmain/musicmain",
+            "style" : {
+				"navigationBarTitleText": "语书——诉你所书"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
