@@ -1,0 +1,259 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.sousuo {
+  height: 50rpx;
+  width: 93%;
+  margin: 10rpx auto;
+  background-color: #F7F7F7;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.sousuo .icon-sousuo {
+    display: inline-block;
+    font-size: 16px !important;
+    top: 5rpx;
+    left: 2rpx;
+    position: absolute;
+}
+.sousuo .input {
+    display: inline-block;
+    height: 50rpx;
+    width: 500rpx;
+    top: 0;
+    left: 22px !important;
+    font-size: 12px !important;
+    position: absolute;
+}
+.sousuo button {
+    float: right;
+    height: 54rpx;
+    width: 182rpx;
+    display: inline-block;
+    line-height: 54rpx;
+    text-align: center;
+    font-size: 12px !important;
+    color: #3C3E49;
+    right: -1px;
+    top: -1rpx !important;
+    position: absolute;
+}
+.card {
+  width: 93%;
+  height: 180rpx;
+  background-color: #F7F7F7;
+  margin: 10px auto;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px #CCCCCC;
+  position: relative;
+}
+.card .left-line {
+    position: absolute;
+    width: 6px;
+    height: 70rpx;
+    left: -3px;
+    top: 55rpx;
+    background-color: salmon;
+    border-radius: 10px;
+}
+.card .text-top {
+    position: absolute;
+    top: 30rpx;
+    left: 30rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+}
+.card .text-center {
+    position: absolute;
+    top: 75rpx;
+    left: 30rpx;
+    font-size: 18rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+    color: #555555;
+}
+.card .divider {
+    position: absolute;
+    width: 400rpx;
+    height: 1rpx;
+    border-top: 1px dashed #cccccc;
+    top: 110rpx;
+    left: 30rpx;
+}
+.card .text-bottom {
+    position: absolute;
+    bottom: 30rpx;
+    left: 30rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+    color: #555555;
+}
+.card .circle {
+    position: absolute;
+    top: 20rpx;
+    right: 50rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    background: -webkit-linear-gradient(left, limegreen, lime, springgreen);
+}
+.card .circle .inner-circle {
+      position: absolute;
+      width: 72rpx;
+      height: 72rpx;
+      left: 14rpx;
+      top: 14rpx;
+      background-color: #F7F7F7;
+      border-radius: 50%;
+}
+.card .circle .inner-circle .inner-center {
+        position: absolute;
+        width: 14rpx;
+        height: 18rpx;
+        left: 29rpx;
+        top: 27rpx;
+        border-radius: 30px;
+        background: -webkit-linear-gradient(left, limegreen, lime, springgreen);
+}
+.card .circle .inner-circle .inner-center .linear {
+          position: absolute;
+          width: 6rpx;
+          height: 10rpx;
+          top: 4rpx;
+          left: 4rpx;
+          background-color: #F7F7F7;
+          border-radius: 10px;
+}
+.card .history {
+    position: absolute;
+    right: 80rpx;
+    bottom: 28rpx;
+    font-size: 20rpx;
+    font-family: arial;
+    letter-spacing: 3rpx;
+}
+.card .icon-xiangyoujiantou {
+    position: absolute;
+    right: 50rpx;
+    bottom: 28rpx;
+    font-size: 20rpx;
+    color: #777777;
+}
+.list {
+  width: 93%;
+  height: 220rpx;
+  background-color: #F5F5F5;
+  margin: 20px auto;
+  border-radius: 8px;
+  position: relative;
+}
+.list .img {
+    position: absolute;
+    left: 20rpx;
+    top: 30rpx;
+    width: 130rpx;
+    height: 170rpx;
+}
+.list .container {
+    width: 377rpx;
+    height: 220rpx;
+    position: absolute;
+    left: 180rpx;
+    top: 0;
+}
+.list .container .title {
+      position: absolute;
+      left: 0rpx;
+      top: 35rpx;
+      font-size: 28rpx;
+      letter-spacing: 2rpx;
+      white-space: nowrap;
+      display: block;
+      width: 377rpx;
+      height: 35rpx;
+      overflow: hidden;
+}
+.list .container .author {
+      position: absolute;
+      left: 0rpx;
+      top: 100rpx;
+      font-size: 25rpx;
+      letter-spacing: 5rpx;
+      color: red;
+}
+.list .container .author-name {
+      position: absolute;
+      left: 70rpx;
+      top: 100rpx;
+      font-size: 25rpx;
+      letter-spacing: 2rpx;
+      display: block;
+      width: 330rpx;
+      height: 30rpx;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+}
+.list .container .icon-redian {
+      position: absolute;
+      left: 0;
+      top: 130rpx;
+      font-size: 30rpx;
+      color: red;
+}
+.list .container .hot-score {
+      position: absolute;
+      left: 40rpx;
+      top: 155rpx;
+      font-size: 20rpx;
+      letter-spacing: 2rpx;
+}
+.list .right-box {
+    position: absolute;
+    width: 70rpx;
+    left: 580rpx;
+    top: 20rpx;
+    height: 180rpx;
+    border-left: 1px dashed #C0C0C0;
+}
+.list .right-box .icon-pingcebaogao {
+      position: absolute;
+      font-size: 50rpx;
+      left: 26rpx;
+      top: 30rpx;
+      color: #646566;
+}
+.list .right-box .review {
+      position: absolute;
+      font-size: 20rpx;
+      color: #646566;
+      left: 30rpx;
+      bottom: 60rpx;
+}
+
