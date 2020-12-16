@@ -1,6 +1,7 @@
 <template>
 	<view>
-		<text class="text">尚在开发，敬请期待</text>
+		<image class="tu" :src="`https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2680786358,1010619428&fm=26&gp=0.jpg`"></image>
+		<view class="text-top">空空滴，还没有记录</view>
 	</view>
 </template>
 
@@ -18,12 +19,20 @@
 </script>
 
 <style lang="scss">
-    .text {
+    .tu{
     	position: relative;
-    	display: block;
-    	left: 240rpx;
-    	margin: 200rpx auto;
+    	margin: 100rpx auto;
+    	width: 93%;
+    	height: 480rpx;
+    }
+    .text-top{
+    	position: relative;
+    	width: 300rpx;
+    	height: 40rpx;
+    	line-height: 40rpx;
+    	text-align: center;
     	font-size: 30rpx;
     	color: #C0C0C0;
+    	margin: 0 auto;
     }
 </style>

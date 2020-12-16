@@ -43,7 +43,15 @@
     border-radius: 50%;
     left: 30rpx;
     top: 10rpx;
-    background-color: gray;
+    background-color: #E5E5E5;
+}
+.top .touxiang .tx-img {
+      position: absolute;
+      width: 130rpx;
+      height: 130rpx;
+      border-radius: 50%;
+      left: 0rpx;
+      top: 0rpx;
 }
 .top .book-code {
     position: absolute;
@@ -62,12 +70,15 @@
     position: absolute;
     left: 170rpx;
     top: 15rpx;
-    width: 150rpx;
+    width: 230rpx;
     height: 60rpx;
     color: white;
     font-size: 40rpx;
     line-height: 60rpx;
     text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .top .huangguan {
     position: absolute;

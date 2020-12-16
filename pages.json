@@ -26,6 +26,36 @@
 				"navigationBarTextStyle":"white"
 			}
         }
+        ,{
+            "path" : "pages/a/a",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/book-reminder/book-reminder",
+            "style" : {
+				"navigationBarTitleText": "图书提醒"
+			}
+        }
+        ,{
+            "path" : "pages/binding-card/binding-card",
+            "style" : {
+				"navigationBarTitleText": "绑定会员卡"
+			}
+        }
+        ,{
+            "path" : "pages/join-class/join-class",
+            "style" : {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor":"#19CAAD"
+			}
+        },
+		{
+            "path" : "pages/city/city",
+            "style" : {
+				"navigationBarTitleText": "选择城市",
+				"navigationBarBackgroundColor":"#FFFFFF"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

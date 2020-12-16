@@ -24,12 +24,20 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.text {
+.tu {
   position: relative;
-  display: block;
-  left: 240rpx;
-  margin: 200rpx auto;
+  margin: 100rpx auto;
+  width: 93%;
+  height: 480rpx;
+}
+.text-top {
+  position: relative;
+  width: 300rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
   font-size: 30rpx;
   color: #C0C0C0;
+  margin: 0 auto;
 }
 

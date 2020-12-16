@@ -2,9 +2,11 @@
 	<view>
 		<view class="top">
 			<image class="top-bg" :src="`https://uptownlet.com/appendix/image.jspx?id=c71b92161a3c4955aaa0bc9414c79486`"></image>
-			<view class="touxiang"></view>
+			<view class="touxiang">
+				<image class="tx-img" :src="yonghuwx.avatarUrl"></image>
+			</view>
 			<view class="book-code">取书码</view>
-			<view class="username">用户名</view>
+			<view class="username">{{yonghuwx.nickName}}</view>
 			<view class="huangguan">
 				<icon class="iconfont iconV"></icon>
 				<text class="outsider">非会员</text>
@@ -66,12 +68,12 @@
 			<text class="name">我的借书订单</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
 		</view>
-		<view class="alert">
+		<view class="alert" @click="book">
 			<icon class="iconfont icon-tixing"></icon>
 			<text class="name">我的可借提醒</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
 		</view>
-		<view class="reading-card">
+		<view class="reading-card" @click="bindcard">
 			<icon class="iconfont icon-deng"></icon>
 			<text class="name">我的阅读卡</text>
 			<text class="binding">去绑定</text>
@@ -82,7 +84,7 @@
 			<text class="name">我收藏的书</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
 		</view>
-		<view class="join">
+		<view class="join" @click="joinclass">
 			<icon class="iconfont icon-shuxie"></icon>
 			<text class="name">加入班级</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
@@ -108,7 +110,7 @@
 			<text class="name">兑换码</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
 		</view>
-		<view class="city">
+		<view class="city" @click="city">
 			<icon class="iconfont icon-qiehuan"></icon>
 			<text class="name">切换城市</text>
 			<icon class="iconfont icon-xiangyoujiantou"></icon>
@@ -125,11 +127,23 @@
 	export default {
 		data() {
 			return {
-				
+				yonghuwx:[]
 			}
 		},
 		onLoad() {
-			// getBgImg()
+			let that = this;
+			uni.login({
+				provider:'weixin',
+				success:function (loginRes) {
+					uni.getUserInfo({
+						provider:'weixin',
+						success:function(infoRes){
+                            that.yonghuwx = infoRes.userInfo
+							console.log(that.yonghuwx)
+						}
+					})
+				}
+			})
 		},
 		methods: {
 			jump() {
@@ -137,6 +151,26 @@
 					url: '/pages/index/index'
 				})
 			},
+			book(){
+				uni.navigateTo({
+					url:'/pages/book-reminder/book-reminder'
+				})
+			},
+			bindcard(){
+				uni.navigateTo({
+					url:'/pages/binding-card/binding-card'
+				})
+			},
+			joinclass(){
+				uni.navigateTo({
+					url:'/pages/join-class/join-class'
+				})
+			},
+			city(){
+				uni.navigateTo({
+					url:'/pages/city/city'
+				})
+			}
 			// async getBgImg() {
 			// 		let result = await myRequestGet()
 			// },
@@ -164,7 +198,15 @@
 			border-radius: 50%;
 			left: 30rpx;
 			top: 10rpx;
-			background-color: gray;
+			background-color: #E5E5E5;
+			.tx-img{
+				position: absolute;
+				width: 130rpx;
+				height: 130rpx;
+				border-radius: 50%;
+				left: 0rpx;
+				top: 0rpx;
+			}
 		}
 		.book-code{
 			position: absolute;
@@ -183,12 +225,16 @@
 			position: absolute;
 			left: 170rpx;
 			top: 15rpx;
-			width: 150rpx;
+			width: 230rpx;
 			height: 60rpx;
 			color: white;
 			font-size: 40rpx;
 			line-height: 60rpx;
 			text-align: center;
+			// background-color: pink;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
 			
 		}
 		.huangguan{

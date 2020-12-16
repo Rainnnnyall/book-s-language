@@ -18,6 +18,7 @@ import '@/static/font_2272616_r56djo2cv3/iconfont.css'
 import '@/static/font_2272620_u0y0sfn1rh/iconfont.css'
 import '@/static/font_2272623_p4il842zl2l/iconfont.css'
 import '@/static/font_2272628_ct4h3hgh8c/iconfont.css'
+import '@/static/font_2274828_qzkqezih20d/iconfont.css'
 Vue.config.productionTip = false
 
 App.mpType = 'app'

@@ -3,7 +3,12 @@
     "pages/index/index",
     "pages/review-history/review-history",
     "pages/review-question/review-question",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/a/a",
+    "pages/book-reminder/book-reminder",
+    "pages/binding-card/binding-card",
+    "pages/join-class/join-class",
+    "pages/city/city"
   ],
   "subPackages": [],
   "window": {
@@ -13,5 +18,5 @@
     "backgroundColor": "#F8F8F8"
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap48.json"
+  "sitemapLocation": "sitemap49.json"
 }
