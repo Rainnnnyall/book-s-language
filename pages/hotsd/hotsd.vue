@@ -51,7 +51,7 @@
 			},
 			godetails(item) {
 				uni.navigateTo({
-					url: `../details/details?tsid=${item.tsid}&kjsl=${item.kjsl}`
+					url: `../details/details?id=${item.tsid}&kjsl=${item.kjsl}`
 				})
 			}
 		}

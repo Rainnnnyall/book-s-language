@@ -40,10 +40,8 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.9.2",
-  "appid": "wx3854fa6d05e77834",
+  "appid": "touristappid",
   "projectname": "myapp",
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []
