@@ -4,37 +4,37 @@
 			<image :src="`https://imagev2.xmcdn.com/${cover}`" style="display: inline-block; width: 100px;height: 100px;vertical-align: top;"
 			 mode=""></image>
 			<view style="margin-bottom: 10px; display: inline-block;width: 255px;padding: 0px 10px;">
-				<text style="display: inline-block;height: 25px;width: 275px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; font-size: 18px;">{{title}}</text>
-				<button @click="shoucang" class="btn" type="default" size="mini">收藏</button>
-				<button open-type="share" type="default" size="mini">分享</button>
+				<text style="font-weight: 600; display: inline-block;height: 25px;width: 275px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; font-size: 18px;">{{title}}</text>
+				<text style="margin-bottom: 10px; display: block;font-size: 14px;color: #bbb;">{{customTitle}}</text>
+				<button plain="true" @click="shoucang" class="btn" type="default" size="mini" style="height: 31px; width: 80px;font-size: 13px;">✚订阅</button>
+				<button open-type="share" type="default" size="mini" style="position: relative; font-size: 13px; height: 31px; width: 80px; color: white; background-color: rgb(7,193,96);">
+					<text class="iconfont icon-weixin"></text>
+					<text style="padding-left: 19px;">分享</text>
+				</button>
 			</view>
 		</view>
 		<view>
-			<view   style="width: 670rpx;height: 70px;border: 1px solid #ccc;padding:10px 40rpx;" v-for="(uu,ii) in arr2"
+			<view style=" position: relative; width: 670rpx;height: 70px;border: 1px solid #ccc;padding:10px 40rpx;" v-for="(uu,ii) in arr2"
 			 :key="ii" :class="{'active':active==ii}">
+				<text space="true" decode="true" style="color: red;font-size: 20px;font-weight: 600;margin-right: 5px;">{{ ii+1 }}</text>
 				<text>{{uu.trackInfo.title}}</text>
 				<view>
-					<!-- <text class="iconfont icon-erji"></text> -->
-					<button style="float: right;" size="mini" @click="audioPause(uu,ii)">暂停</button>
-					<button style="float: right;" size="mini"  @click="audioPlay(uu,ii)">播放</button>
-					
+					<text @click="pplly(uu,ii)" class="iconfont" :class="['iconfont',uu.trackInfo.isPaid?'icon-ziyuan100':'icon-bofang']"></text>
+					<text class="iconfont icon-erji"></text>
 					<text style="color: #bbb;margin-right: 20px;">{{uu.trackInfo.duration}}</text>
 					<text class="iconfont icon-shijian"></text>
 					<text style="color: #bbb;">{{uu.trackInfo.createdAt}}</text>
 				</view>
 			</view>
 		</view>
-		<view style="position: fixed;bottom: 0px;background-color: white;">
-			<view class="page-body">
-				<view class="page-section page-section-gap" style="text-align: center;">
-					<audio id="myAudio" style="width: 750rpx;border: 0px;" :src="`${current.src}`" :poster="`${current.poster}`" :name="`${current.name}`"
-					 :author="`${current.author}`" controls></audio>
-				</view>
+		<view>
+			<view>
+				<audio id="myAudio" :src="`${current.src}`" :poster="`${current.poster}`" :name="`${current.name}`" :author="`${current.author}`"
+				 controls></audio>
 			</view>
 		</view>
 	</view>
 </template>
-
 <script>
 	import {
 		myRequestGet
@@ -46,68 +46,56 @@
 		data() {
 			return {
 				current: {
-					poster: '',
-					name: '',
+					poster: 'https://cdn.nlark.com/yuque/0/2020/jpeg/2545516/1608098409357-86b68b6f-8a85-442e-a92b-074746974101.jpeg',
+					name: '点击播放按钮欣赏节目',
 					author: '书语——诉你所抒',
 					src: '',
 				},
-
-
-				active: 0,
+				flag: true,
+				active: 9999999999999999999999999999,
 				musicid: '',
 				cover: '',
 				title: '',
-				arr2: []
+				customTitle: '',
+				arr2: [],
+				acc: 99999999999999999999999999999999999,
+				index: 99999999999999999999999999999999,
 			}
 		},
 		methods: {
-			audioPlay(uu,ii) {
-				console.log(uu)
+			pplly(uu, ii) {
+				if (this.acc != ii) {
+					for (var i = 0; i < this.arr2.length; i++) {
+						this.arr2[i].trackInfo.isPaid = false
+					}
+				}
+				uu.trackInfo.isPaid = !uu.trackInfo.isPaid
+				console.log(uu.trackInfo.isPaid)
+				if (uu.trackInfo.isPaid) {
+					setTimeout(() => {
+						this.audioCtx.play()
+						this.acc = ii
+					}, 100)
+				} else {
+					setTimeout(() => {
+						this.audioCtx.pause()
+						this.acc = ii
+					}, 100)
+				}
 				this.current.name = uu.trackInfo.title
 				this.current.src = uu.trackInfo.playPath
 				this.current.poster = `https://imagev2.xmcdn.com/${this.cover}`
-				console.log(this.cover, "ssssssssssssssssssssssssssssssssss")
-				// innerAudioContext.autoplay = true;
-				// innerAudioContext.src = `https://imagev2.xmcdn.com/${this.cover}`
-				// innerAudioContext.onPlay(() => {
-				//   console.log('开始播放');
-				// });
-				// innerAudioContext.onError((res) => {
-				//   console.log(res.errMsg);
-				//   console.log(res.errCode);
-				// });
 				this.active = ii
-				this.audioCtx.play()
-			},
-			audioPause(uu,ii){
-				console.log(uu)
-				this.current.name = uu.trackInfo.title
-				this.current.src = uu.trackInfo.playPath
-				this.current.poster = `https://imagev2.xmcdn.com/${this.cover}`
-				console.log(this.cover, "ssssssssssssssssssssssssssssssssss")
-				// innerAudioContext.autoplay = true;
-				// innerAudioContext.src = `https://imagev2.xmcdn.com/${this.cover}`
-				// innerAudioContext.onPlay(() => {
-				//   console.log('开始播放');
-				// });
-				// innerAudioContext.onError((res) => {
-				//   console.log(res.errMsg);
-				//   console.log(res.errCode);
-				// });
-				this.active = ii
-				this.audioCtx.pause()
+				this.index = ii
 			},
 			async music() {
-				console.log(this.musicid, "55555555555555555")
 				let result = await myRequestGet(`?albumId=${this.musicid}&page=1&pageSize=20`)
 				result = result.data.trackDetailInfos
 				this.arr2 = result
-				console.log(result)
-
 			},
 			shoucang() {
 				uni.showToast({
-					title: "收藏成功!"
+					title: "订阅成功!"
 				})
 			}
 		},
@@ -115,21 +103,45 @@
 			this.musicid = option.idd
 			this.cover = option.cover
 			this.title = option.title
-			console.log(this.musicid, this.cover, this.title)
+			this.customTitle = option.customTitle
+			console.log(this.musicid, this.cover, this.title, this.customTitle)
 			this.music()
 		}
-
 	}
 </script>
-
 <style lang="scss">
+	audio {
+		position: fixed;
+		bottom: 0px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.icon-weixin {
+		font-size: 24px;
+		position: absolute;
+		left: 15px;
+		top: -11px;
+	}
+
 	.btn {
 		margin-right: 10px;
 	}
 
+	.icon-ziyuan100 {
+		position: absolute;
+		font-size: 33px;
+		bottom: 9px;
+		right: 14px;
+
+	}
+
 	.icon-bofang {
+		position: absolute;
 		font-size: 40px;
-		float: right;
+		bottom: 5px;
+		right: 10px;
 	}
 
 	.haha {
