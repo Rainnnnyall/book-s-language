@@ -25,7 +25,7 @@
 			</view>
 			<view class="shi">
 				<text>{{ping.cdate}}</text>
-				<text><text class="iconfont icon-pinglun"></text>评论</text>
+				<text><text class="iconfont icon-pinglun"></text><text class="lun">评论</text></text>
 			</view>
 		</view>
 	</view>
@@ -166,7 +166,7 @@
 			padding: 7px 0;
 
 			text {
-				font-size: 12px;
+				font-size: 14px;
 				color: #999;
 
 				text {
@@ -175,6 +175,9 @@
 			}
 
 			border-bottom: 1px solid #E5E5E5;
+			.lun{
+				color: #4CD964;
+			}
 		}
 
 

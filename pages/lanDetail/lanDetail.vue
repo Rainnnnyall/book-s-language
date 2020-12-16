@@ -4,7 +4,7 @@
 			<image class="back" src="https://uptownlet.com/appendix/image.jspx?id=0e992f01442f4730af813d5bb97a3015"></image>
 			<image class="ground" src="https://uptownlet.com/appendix/image.jspx?id=3b185a9113b147ffa606e413a4085907"></image>
 			
-			<button class="btn" open-type="share"><text class="iconfont icon-fenxiang" ></text></button>
+			<button class="btn" style="border:none;" open-type="share"><text class="iconfont icon-fenxiang" ></text></button>
 			<view class="title">
 				<text>{{title}}</text>
 				<text>纸享读书</text>
@@ -108,7 +108,10 @@
 		position: relative;
 		font-size: 14px;
 		.btn::after{
-			border: none;
+			border: none!important;
+		}
+		.btn>button{
+			border: none!important;
 		}
 		.btn{
 			background-color:rgba(255,255,255,0)!important;

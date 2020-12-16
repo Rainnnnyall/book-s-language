@@ -55,7 +55,7 @@
 							<text>进度：86/499</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan1"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -78,7 +78,7 @@
 							<text>进度：86/1249</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan2"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -101,7 +101,7 @@
 							<text>进度：86/2499</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan3"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -124,7 +124,7 @@
 							<text>进度：86/4599</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan4"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -147,7 +147,7 @@
 							<text>进度：86/8999</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan5"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -170,7 +170,7 @@
 							<text>进度：86/20000</text>
 							<text>请继续努力,再接再厉哟</text>
 						</view>
-						<view class="iconfont icon-xianshi_quxiao" @click="guan"></view>
+						<view class="iconfont icon-xianshi_quxiao" @click="guan6"></view>
 					</view>
 				</uni-popup>
 			</view>
@@ -194,11 +194,23 @@
 		methods: {
 			guan(){
 				this.$refs.popup.close();
+			},
+			guan1(){
 				this.$refs.popup1.close();
+			},
+			guan2(){
 				this.$refs.popup2.close();
+			},
+			guan3(){
 				this.$refs.popup3.close();
+			},
+			guan4(){
 				this.$refs.popup4.close();
+			},
+			guan5(){
 				this.$refs.popup5.close();
+			},
+			guan6(){
 				this.$refs.popup6.close();
 			}
 		}
@@ -207,6 +219,9 @@
 
 <style lang="scss">
 	.content {
+		/deep/.uni-progress-inner-bar{
+			border-radius: 15px!important;
+		}
 		.fugai{
 			padding: 20px;
 			margin-top: -100px;
@@ -311,6 +326,7 @@
 
 		.progress-box {
 			padding: 10rpx 40rpx;
+			
 		}
 
 		.liebiao {

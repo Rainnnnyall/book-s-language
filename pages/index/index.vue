@@ -1,6 +1,14 @@
 <template>
 	<view class="wrap">
 		<navigator url="../teacher/teacher">去名师导读</navigator>
+		<navigator url="../fenxiang/fenxiang">去分享</navigator>
+		<navigator url="../jieshu/jieshu">去借书</navigator>
+		<navigator url="../lanDetail/lanDetail">去栏目详情</navigator>
+		<navigator url="../pinglun/pinglun">去评论</navigator>
+		<navigator url="../shou/shou">去收藏</navigator>
+		<navigator url="../xunzhang/xunzhang">去勋章</navigator>
+		<navigator url="../xiaofei/xiaofei">去消费</navigator>
+		<navigator url="../about/about">关于我们</navigator>
 	</view>
 	
 </template>
@@ -9,49 +17,24 @@
 	export default{
 	      data(){
 		   return{
-			isFload: true 
+			
 		   }
 		},
 		methods:{
-		    fload(){
-                          //改变isFload的状态
-			  this.isFload = !this.isFload;
-		    }
+		   
 		}
 	}
 </script>
  
-<style>
+<style lang="scss">
 	.wrap{
-		width:700upx;
-		display: flex;
-		font-size:26upx;
-		justify-content: space-between;
-		margin: 0 auto;
-		position: relative;
-	}
-	.fload{
-		width:600upx;
-		height: auto;
-		display: -webkit-box;
-		word-break: break-all;
-		-webkit-box-orient: vertical;
-		/* 要显示多少行就改变line-clamp的数据,此处折叠起来显示一行*/
-		-webkit-line-clamp: 3;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		margin-right: 40upx;
-		background-color:#F5F5F5;
-	}
-	.hide{
-		display: -webkit-box;
-	}
-	.show{
-		display: block;
-	}
-	.icon-bofang{
-		position: absolute;
-		bottom: 0;
-	}
- 
+		navigator{
+			
+			width: 50px;
+			padding: 10px 20px;
+			background-color: pink;
+			margin: 0 auto;
+			margin-top: 20px;
+		}
+ }
 </style>

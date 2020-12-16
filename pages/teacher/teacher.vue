@@ -7,7 +7,7 @@
 				<text @click="go">书友推荐</text>
 				<view class="sousuo1">
 					<view class="iconfont icon-iconfontsousuokuangsousuo"></view>
-					<input type="text" placeholder="搜索书名/作者/关键字······" class="sousuo" />
+					<input type="text" placeholder="搜索书名/作者/关键字..." class="sousuo" />
 				</view>
 			</view>
 			<!-- 青少年导读 -->
@@ -289,7 +289,8 @@
 
 					.icon-iconfontsousuokuangsousuo {
 						display: inline-block;
-						font-size: 36rpx;
+						font-size: 32rpx;
+						color: #666;
 						/* #ifdef MP-WEIXIN|H5|APP-PLUS */
 						position: absolute;
 						left: 10rpx;
@@ -409,22 +410,29 @@
 			}
 
 			// 热门导读
+			.beijing::after{
+				content: "";
+				display: block;
+				clear: both;
+			}
 			.beijing {
 				width: 350rpx;
 				height: 640rpx;
 				background-color: #eee;
 				border-top-right-radius: 30rpx;
 				border-bottom-right-radius: 30rpx;
-
+				padding-top:6px ;
+				box-sizing: border-box;
 				.scroll {
 					width: 750rpx;
 					display: flex;
 					white-space: nowrap;
 					border-radius: 30rpx;
+					margin-top: 10px;
 					.sitem {
 						z-index: 1000;
 						display: inline-block;
-						// height: 585rpx;
+						height: 585rpx;
 						margin-left: 20rpx;
 						margin-right: 20rpx;
 						width: 420rpx;
@@ -433,7 +441,7 @@
 						padding: 20rpx;
 						box-sizing: border-box;
 						box-shadow: 0 0 20rpx #E5E5E5;
-                        vertical-align: baseline;
+                        vertical-align: top;
 						
 						.bt {
 							font-size: 28rpx;
@@ -453,8 +461,8 @@
                             height: 70px;
 							vertical-align:bottom;
 							image {
-								width: 100rpx;
-								height: 140rpx;
+								width: 90rpx;
+								height: 120rpx;
 								margin-right: 20rpx;
 							}
 

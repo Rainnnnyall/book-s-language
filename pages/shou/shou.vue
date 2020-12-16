@@ -1,7 +1,12 @@
 <template>
-	<view class="information"  >
+	<view class="information">
 		<!-- #ifdef MP-ALIPAY|MP-WEIXIN -->
-		<image src="../../static/123.PNG" mode="widthFix" class="bgc" :style="{'display':carts==0?'block':'none'}"></image>
+		<view class="kong">
+			<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2680786358,1010619428&fm=26&gp=0.jpg" mode="widthFix"
+			 class="bgc" :style="{'display':carts==0?'block':'none'}"></image>
+			<text :style="{'display':carts==0?'block':'none'}">空空滴，还没有记录</text>
+			<text :style="{'display':carts==0?'block':'none'}">~快去选本书~</text>
+		</view>
 		<!-- #endif -->
 		<view class="cont" v-for="item in carts" :key="item.id">
 			<view class="img">
@@ -16,7 +21,7 @@
 			</view>
 			<view class="jiaru">
 				<!-- -->
-				<view class="s-top"   @click="shoucang(item.id,item)">
+				<view class="s-top" @click="shoucang(item.id,item)">
 					<text class="iconfont icon-shoucang red"></text>
 					<text class="red">已收藏</text>
 				</view>
@@ -48,13 +53,13 @@
 			})
 		},
 		onLoad() {
-			
+
 		},
 		methods: {
 			...mapMutations({
 				clearCarts: "clearCarts"
 			}),
-			shoucang(id,item){
+			shoucang(id, item) {
 				this.clearCarts(item)
 			}
 		}
@@ -62,12 +67,34 @@
 </script>
 
 <style lang="scss">
-	.bgc{
-		width: 80%;
-		margin-left: 90rpx;
-		margin-top: 100rpx;
-	} 
+	page {
+		/* #ifdef MP-ALIPAY */
+		background-color: #fff;
+		/* #endif */
+	}
+
 	.information {
+		.kong {
+			display: flex;
+			flex-direction: column;
+
+			.bgc {
+				margin-top: 65px;
+				margin-bottom: 10px;
+			}
+
+			text {
+				text-align: center;
+				font-size: 14px;
+				color: #999;
+				line-height: 25px;
+			}
+
+			text:nth-child(2) {
+				font-size: 12px;
+			}
+		}
+
 		.red {
 			color: red;
 		}
