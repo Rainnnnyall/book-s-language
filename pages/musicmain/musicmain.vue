@@ -16,8 +16,8 @@
 		<view>
 			<view style=" position: relative; width: 670rpx;height: 70px;border: 1px solid #ccc;padding:10px 40rpx;" v-for="(uu,ii) in arr2"
 			 :key="ii" :class="{'active':active==ii}">
-				<text space="true" decode="true" style="color: red;font-size: 20px;font-weight: 600;margin-right: 5px;">{{ ii+1 }}</text>
-				<text>{{uu.trackInfo.title}}</text>
+				<text space="true" decode="true" style="color: red;font-size: 20px;font-weight: 600;margin-right: 5px;float: left;">{{ ii+1 }}</text>
+				<text class="main">{{uu.trackInfo.title}}</text>
 				<view>
 					<text @click="pplly(uu,ii)" class="iconfont" :class="['iconfont',uu.trackInfo.isPaid?'icon-ziyuan100':'icon-bofang']"></text>
 					<text class="iconfont icon-erji"></text>
@@ -29,7 +29,7 @@
 		</view>
 		<view>
 			<view>
-				<audio id="myAudio" :src="`${current.src}`" :poster="`${current.poster}`" :name="`${current.name}`" :author="`${current.author}`"
+				<audio id="myAudio" :src="`${current.src}`" :poster="current.poster" :name="current.name" :author="current.author"
 				 controls></audio>
 			</view>
 		</view>
@@ -150,5 +150,16 @@
 
 	.active {
 		color: red;
+	}
+	.main{
+		display:inline-block;
+		width: 290px;
+		height: 40px;
+		font-size: 14px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 	}
 </style>

@@ -28,6 +28,12 @@
 				"navigationBarTitleText": "语书——诉你所书"
 			}
         }
+        ,{
+            "path" : "pages/vip/vip",
+            "style" : {
+				"navigationBarTitleText": "会员权益兑换"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
