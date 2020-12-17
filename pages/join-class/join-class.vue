@@ -87,6 +87,16 @@
 				right: 150rpx;
                 line-height: 100rpx;
 			}
+			/* #ifdef MP-ALIPAY */
+			input{
+				position: absolute;
+				top: 0;
+				width: 300rpx;
+				height: 90rpx;
+				right: 150rpx;
+			    line-height: 90rpx;
+			}
+			/* #endif */
 		}
 		.two{
 			position: relative;
@@ -108,6 +118,16 @@
 				right: 100rpx;
 		        line-height: 100rpx;
 			}
+			/* #ifdef MP-ALIPAY */
+			input{
+				position: absolute;
+				top: 0;
+				width: 350rpx;
+				height: 90rpx;
+				right: 100rpx;
+			    line-height: 90rpx;
+			}
+			/* #endif */
 		}
 	}
 	.bottom{

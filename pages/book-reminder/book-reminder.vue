@@ -20,6 +20,12 @@
 </script>
 
 <style lang="scss">
+	/* #ifdef MP-ALIPAY */
+	page{
+		background-color: #FFFFFF;
+	}
+	/* #endif */
+	
     .tu{
 		position: relative;
 		margin: 100rpx auto;

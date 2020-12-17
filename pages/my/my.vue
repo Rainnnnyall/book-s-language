@@ -6,7 +6,12 @@
 				<image class="tx-img" :src="yonghuwx.avatarUrl"></image>
 			</view>
 			<view class="book-code">取书码</view>
+			<!-- #ifdef MP-WEIXIN -->
 			<view class="username">{{yonghuwx.nickName}}</view>
+			<!-- #endif -->
+			<!-- #ifdef H5 MP-ALIPAY -->
+			<view class="username">登录/注册</view>
+			<!-- #endif -->
 			<view class="huangguan">
 				<icon class="iconfont iconV"></icon>
 				<text class="outsider">非会员</text>
@@ -298,6 +303,24 @@
 				font-size: 20rpx;
 				color: 	#008B8B;
 			}
+			/* #ifdef H5 */
+			.icon-huizhang-copy{
+				position: absolute;
+				left: 10rpx;
+				top: 4rpx;
+				font-size: 20rpx;
+				color: 	#008B8B;
+			}
+			/* #endif */
+			/* #ifdef MP-ALIPAY */
+			.icon-huizhang-copy{
+				position: absolute;
+				left: 10rpx;
+				top: -18rpx;
+				font-size: 20rpx;
+				color: 	#008B8B;
+			}
+			/* #endif */
 			.badgeWall{
 				position: absolute;
 				left: 39rpx;
@@ -313,6 +336,24 @@
 				color: white;
 				top: -17rpx;
 			}
+			/* #ifdef H5 */
+			.icon-xiangyoujiantou{
+				position: absolute;
+				right: 15rpx;
+				font-size: 25rpx;
+				color: white;
+				top: 6rpx;
+			}
+			/* #endif */
+			/* #ifdef MP-ALIPAY */
+			.icon-xiangyoujiantou{
+				position: absolute;
+				left: 1.15rem!important;
+				font-size: 25rpx;
+				color: white;
+				top: 0.04rem!important;
+			}
+			/* #endif */
 		}
 		.read-left{
 			position: absolute;
@@ -605,6 +646,7 @@
 		height: 100rpx;
 		border-bottom: 1px solid #EEEEEE;
 		// background-color: pink;
+		/* #ifdef MP-WEIXIN */
 		.icon-file-text{
 			position: absolute;
 			left: 45rpx;
@@ -612,6 +654,25 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #endif */
+		/* #ifdef H5 */
+		.icon-file-text{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-file-text{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -625,6 +686,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.alert{
 		position: relative;
@@ -640,6 +719,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-tixing{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-tixing{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -653,6 +750,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.reading-card{
 		position: relative;
@@ -668,6 +783,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-deng{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-deng{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -687,6 +820,24 @@
 			top: 22rpx;
 			color: #ECAEA0;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #ECAEA0;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.book{
 		position: relative;
@@ -702,6 +853,24 @@
 			font-size: 30rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-xin{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 30rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xin{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 30rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -715,6 +884,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.join{
 		position: relative;
@@ -730,6 +917,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-shuxie{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-shuxie{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -743,6 +948,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.record{
 		position: relative;
@@ -758,6 +981,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-qian{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-qian{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -777,6 +1018,24 @@
 			top: 22rpx;
 			color: #ECAEA0;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #ECAEA0;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.recommend{
 		position: relative;
@@ -792,6 +1051,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-AI{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-AI{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -805,6 +1082,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.our{
 		position: relative;
@@ -820,6 +1115,24 @@
 			font-size: 35rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-women{
+			position: absolute;
+			left: 45rpx;
+			top: 30rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-women{
+			position: absolute;
+			left: 45rpx;
+			top: 20rpx;
+			font-size: 35rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -833,6 +1146,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.exchange-code{
 		position: relative;
@@ -848,6 +1179,24 @@
 			font-size: 40rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-duihuanma{
+			position: absolute;
+			left: 40rpx;
+			top: 30rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-duihuanma{
+			position: absolute;
+			left: 40rpx;
+			top: 20rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -861,6 +1210,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.city{
 		position: relative;
@@ -876,6 +1243,24 @@
 			font-size: 40rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-qiehuan{
+			position: absolute;
+			left: 40rpx;
+			top: 30rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-qiehuan{
+			position: absolute;
+			left: 40rpx;
+			top: 20rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -889,6 +1274,24 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 	.leading-readers{
 		position: relative;
@@ -904,6 +1307,24 @@
 			font-size: 40rpx;
 			color: #19CAAD;
 		}
+		/* #ifdef H5 */
+		.icon-fenxiangzhuanfafasongzhijiantouyuanxingshar{
+			position: absolute;
+			left: 40rpx;
+			top: 30rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-fenxiangzhuanfafasongzhijiantouyuanxingshar{
+			position: absolute;
+			left: 40rpx;
+			top: 20rpx;
+			font-size: 40rpx;
+			color: #19CAAD;
+		}
+		/* #endif */
 		.name{
 			position: absolute;
 			line-height: 100rpx;
@@ -917,5 +1338,23 @@
 			top: 20rpx;
 			color: #9F9F9F;
 		}
+		/* #ifdef H5 */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 40rpx;
+			font-size: 40rpx;
+			top: 30rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
+		/* #ifdef MP-ALIPAY */
+		.icon-xiangyoujiantou{
+			position: absolute;
+			right: 0rpx;
+			font-size: 40rpx;
+			top: 20rpx;
+			color: #9F9F9F;
+		}
+		/* #endif */
 	}
 </style>

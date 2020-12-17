@@ -36,6 +36,7 @@
 <style lang="scss">
     .one{
 		position: relative;
+		display: block;
 		width: 87%;
 		height: 100rpx;
 		margin: 10rpx auto;
@@ -43,8 +44,22 @@
 		font-size: 28rpx;
 		border-bottom: 1rpx solid #CCCCCC;
 	}
+	/* #ifdef MP-ALIPAY */
+	.one{
+		position: relative;
+		display: block;
+		width: 87%;
+		height: 100rpx;
+		margin: 10rpx auto;
+		line-height: 100rpx;
+		font-size: 28rpx;
+		border-bottom: 1rpx solid #CCCCCC;
+		background-color: #F8F8F8;
+	}
+	/* #endif */
 	.two{
 		position: relative;
+		display: block;
 		width: 87%;
 		height: 100rpx;
 		margin: 10rpx auto;
@@ -52,8 +67,22 @@
 		font-size: 28rpx;
 		border-bottom: 1rpx solid #CCCCCC;
 	}
+	/* #ifdef MP-ALIPAY */
+	.two{
+		position: relative;
+		display: block;
+		width: 87%;
+		height: 100rpx;
+		margin: 10rpx auto;
+		line-height: 100rpx;
+		font-size: 28rpx;
+		border-bottom: 1rpx solid #CCCCCC;
+		background-color: #F8F8F8;
+	}
+	/* #endif */
 	.three{
 		position: relative;
+		display: block;
 		width: 87%;
 		height: 100rpx;
 		margin: 10rpx auto;
@@ -61,6 +90,19 @@
 		font-size: 28rpx;
 		border-bottom: 1rpx solid #CCCCCC;
 	}
+	/* #ifdef MP-ALIPAY */
+	.three{
+		position: relative;
+		display: block;
+		width: 87%;
+		height: 100rpx;
+		margin: 10rpx auto;
+		line-height: 100rpx;
+		font-size: 28rpx;
+		border-bottom: 1rpx solid #CCCCCC;
+		background-color: #F8F8F8;
+	}
+	/* #endif */
 	.btn{
 		position: relative;
 		margin: 50rpx auto;

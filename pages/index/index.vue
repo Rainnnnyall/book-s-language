@@ -104,7 +104,7 @@
 		.icon-sousuo {
 			display: inline-block;
 			font-size: 16px !important;
-
+            background-color: #F7F7F7;
 			top: 5rpx;
 			left: 2rpx;
 			position: absolute;
@@ -118,6 +118,7 @@
 			left: 22px !important;
 			font-size: 12px !important;
 			position: absolute;
+			background-color: #F7F7F7;
 		}
 
 		button {
@@ -130,8 +131,9 @@
 			font-size: 12px !important;
 			color: #3C3E49;
 			right: -1px;
-			top: -1rpx !important;
+			top: -2rpx !important;
 			position: absolute;
+			background-color: #F7F7F7;
 
 		}
 
