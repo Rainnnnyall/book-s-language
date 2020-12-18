@@ -23,8 +23,9 @@
 <script>
 	export default {
 		data() {
-			return {	
-				impath:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608131717221&di=cc8d0630ba174039736c3d0a4400ef29&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180122%2F12%2F1516596449-YnxgpMBcQK.jpg"
+			return {
+				impath: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608131717221&di=cc8d0630ba174039736c3d0a4400ef29&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180122%2F12%2F1516596449-YnxgpMBcQK.jpg",
+				yonghu: []
 			}
 		},
 		onLoad() {
@@ -33,23 +34,54 @@
 				icon: 'success', //只支持success，loading，none
 				mask: true //遮盖，点击后不能再点击按钮了
 			})
+			// -----------------------进入直接获取------------------------
+			// let that = this;
+			// uni.login({
+			// 	provider: 'weixin',
+			// 	success: function(loginRes) {
+			// 		// 获取用户信息				
+			// 		uni.getUserInfo({
+			// 			provider: 'weixin',
+			// 			success: function(infoRes) {
+			// 				that.yonghuwx = infoRes.userInfo
+			// 				console.log(that.yonghuwx)
+			// 				that.impath=that.yonghuwx.avatarUrl
+			// 			}
+			// 		});
+			// 	}
+			// });
 		},
+		
 		methods: {
-			getuserinfo(e) {
-                 this.isImg=true
-				console.log(e.detail.userInfo.avatarUrl)
-				this.impath=e.detail.userInfo.avatarUrl
+			// // -----------------------点击button自己获取------------------------
+			getuserinfo() {
+				// let that=this
+				uni.login({
+					provider: 'weixin',
+					success:(loginRes)=> {
+						// 获取用户信息				
+						uni.getUserInfo({
+							provider: 'weixin',
+							success: (infoRes)=>{
+								this.yonghu = infoRes.userInfo
+								console.log(infoRes.userInfo)
+								this.impath=this.yonghu.avatarUrl
+							}
+						});
+					}
+				});
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	page{
+	page {
 		/* #ifdef MP-ALIPAY */
-		 background-color: #fff;
-		 /* #endif */ 
+		background-color: #fff;
+		/* #endif */
 	}
+
 	.content {
 		width: 100%;
 
@@ -62,20 +94,21 @@
 			}
 
 			.tx {
-				width: 80px!important;
-				height: 80px!important;
+				width: 80px !important;
+				height: 80px !important;
 				background-color: #eee;
 				border-radius: 50%;
 				border: 8px solid #19CAAD;
 				position: absolute;
 				bottom: -10px;
 				left: 10px;
-				margin:0px!important;
-				 padding:0px!important;
-				image{
-					width: 65px!important;
-					height: 65px!important;
-					
+				margin: 0px !important;
+				padding: 0px !important;
+
+				image {
+					width: 65px !important;
+					height: 65px !important;
+
 				}
 			}
 

@@ -73,7 +73,7 @@
 				<view class="ping">
 					{{item.yhly}}
 				</view>
-				<view class="shu">
+				<view class="shu" @click="goDetail(item.pid,item)">
 					<view class="s-yes" v-if="item.fxtp">
 						<image :src="`https://uptownlet.com/appendix/image.jspx?id=${item.fxtp}`"></image>
 						<view class="shu-right">
@@ -87,7 +87,7 @@
 				</view>
 				<view class="shi">
 					<text>{{item.cdate}}</text>
-					<text  @click="speack(item.id)"><text class="iconfont icon-pinglun"></text>评论</text>
+					<text @click="speack(item.id)"><text class="iconfont icon-pinglun"></text>评论</text>
 				</view>
 			</view>
 			<view class="pinglun" @click="show"><text class="iconfont icon-pinglun1"></text></view>
@@ -226,11 +226,40 @@
 					});
 				}).exec()
 			},
-			speack(id){
+			speack(id) {
 				console.log("pinglun");
 				uni.navigateTo({
 					url: `/pages/pinglun/pinglun?id=${id}`
 				})
+			},
+			goDetail(id, item) {
+				// uni.navigateTo({
+				// 	url: `/pages/detailChange/detailChange?id=${id}`
+				// })
+				if (item.hasOwnProperty("fxtp")) {
+					uni.navigateTo({
+						url: `/pages/detailChange/detailChange?id=${id}`
+					})
+				}
+				if (!item.hasOwnProperty("fxtp")) {
+					uni.navigateTo({
+						url: `/pages/lanDetail/lanDetail`
+					})
+				}
+				// for (var i = 0; i < this.comments.length; i++) {
+				// 	if (this.comments[i].hasOwnProperty('fxtp')) {
+				// 		uni.navigateTo({
+				// 			url: `/pages/detailChange/detailChange?id=${id}`
+				// 		})
+
+				// 	} else {
+				// 		uni.navigateTo({
+				// 			url: `/pages/lanDetail/lanDetail`
+				// 		})
+
+				// 	}
+				// }
+
 			}
 		}
 	}
@@ -333,7 +362,7 @@
 				padding: 0 20rpx;
 				line-height: 42rpx;
 				margin-top: 10px;
-				
+
 				.tit {
 					font-size: 28rpx;
 					color: #333333;
@@ -410,25 +439,28 @@
 			}
 
 			// 热门导读
-			.beijing::after{
+			.beijing::after {
 				content: "";
 				display: block;
 				clear: both;
 			}
+
 			.beijing {
 				width: 350rpx;
 				height: 640rpx;
 				background-color: #eee;
 				border-top-right-radius: 30rpx;
 				border-bottom-right-radius: 30rpx;
-				padding-top:6px ;
+				padding-top: 6px;
 				box-sizing: border-box;
+
 				.scroll {
 					width: 750rpx;
 					display: flex;
 					white-space: nowrap;
 					border-radius: 30rpx;
 					margin-top: 10px;
+
 					.sitem {
 						z-index: 1000;
 						display: inline-block;
@@ -441,8 +473,8 @@
 						padding: 20rpx;
 						box-sizing: border-box;
 						box-shadow: 0 0 20rpx #E5E5E5;
-                        vertical-align: top;
-						
+						vertical-align: top;
+
 						.bt {
 							font-size: 28rpx;
 						}
@@ -458,8 +490,9 @@
 							display: flex;
 							margin-top: 20rpx;
 							line-height: 40rpx;
-                            height: 70px;
-							vertical-align:bottom;
+							height: 70px;
+							vertical-align: bottom;
+
 							image {
 								width: 90rpx;
 								height: 120rpx;
@@ -543,7 +576,7 @@
 							width: 40px;
 							height: 50px;
 							margin-right: 6px;
-							
+
 						}
 
 						text:nth-child(1) {

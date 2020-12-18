@@ -70,7 +70,7 @@
 						<text class="iconfont icon-shoucang" :class="item.sc?'red':''"></text>
 						<text class="" :class="item.sc?'red':''">{{item.sc?"已收藏":"收藏"}}</text>
 					</view>
-					<view class="s-bottom" @click="bao(item.id)">
+					<view class="s-bottom" @click="baobao(item.id,item)">
 						<text class="iconfont icon-shubao" :class="item.sb?'red':''"></text>
 						<text :class="item.sb?'red':''">{{item.sb?"已加入":"加入"}}</text>
 					</view>
@@ -138,6 +138,9 @@
 			},
 			...mapState({
 				carts: 'carts'
+			}),
+			...mapState({
+				bao:'bao'
 			})
 		},
 		created() {
@@ -149,15 +152,19 @@
 			console.log(this.id, this.page);
 			this.getInfo();
 			this.getShu();
-
-
 		},
 		methods: {
 			...mapMutations({
 				addCarts: 'addCarts'
 			}),
 			...mapMutations({
-				clearCarts: "clearCarts"
+				addBao:'addBao'
+			}),
+			...mapMutations({
+				clearCarts: "clearCarts"	
+			}),
+			...mapMutations({
+				clearBao:'clearBao'
 			}),
 			play() {
 				if (this.isPlay) {
@@ -232,6 +239,14 @@
 						}
 					}
 				}
+				// 加书包
+				for (var i = 0; i < this.shuji.length; i++) {
+					for (var j = 0; j < this.bao.length; j++) {
+						if (this.shuji[i].id == this.bao[j].id) {
+							this.shuji[i].sb = true
+						}
+					}
+				}
 				console.log(this.shuji, "dsdsd");
 			},
 			fload() {
@@ -253,12 +268,26 @@
 				}
 				console.log(id, shu, "xxxxxx");
 			},
-			bao(id) {
+			baobao(id,shu) {
+				// for (var i = 0; i < this.shuji.length; i++) {
+				// 	if (id == this.shuji[i].id) {
+				// 		this.shuji[i].sb = !this.shuji[i].sb
+				// 	}
+				// }
 				for (var i = 0; i < this.shuji.length; i++) {
 					if (id == this.shuji[i].id) {
+						var shu = this.shuji[i]
+						if (this.shuji[i].sb) {
+							this.clearBao(shu)
+						} else {
+							this.addBao(shu)
+						}
+				
 						this.shuji[i].sb = !this.shuji[i].sb
+						// uni.setStorageSync("shuji", this.shuji)
 					}
 				}
+				console.log(id, shu, "shubaoshubao");
 			}
 		}
 	}

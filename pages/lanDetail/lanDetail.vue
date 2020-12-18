@@ -33,7 +33,6 @@
 						<text><text class="iconfont icon-shijian"></text>{{item.sc}}</text>
 						<text class="time">{{item.cdate}}更新</text>
 					</view>
-
 				</view>
 			</view>
 		</view>
@@ -90,7 +89,7 @@
 				console.log(this.px,"pxpxpxpx");
 			},
 			sort(){
-				this.isSort=true
+				this.isSort=!this.isSort
 				console.log("sort");
 				this.detail=this.detail.reverse()
 			}

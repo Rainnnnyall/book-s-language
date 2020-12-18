@@ -43,6 +43,11 @@
 						this.isChecked = -1;
 					}
 				}
+				uni.showToast({
+					title: '没有更多数据了', //提示文字
+					icon: 'success', //只支持success，loading，none
+					mask: true //遮盖，点击后不能再点击按钮了
+				})
 			}
 		}
 	}
