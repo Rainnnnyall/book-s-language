@@ -1,6 +1,6 @@
 <template>
 	<view class="information">
-		<!-- #ifdef MP-ALIPAY|MP-WEIXIN -->
+		<!-- #ifdef MP-ALIPAY|MP-WEIXIN|H5 -->
 		<view class="kong">
 			<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2680786358,1010619428&fm=26&gp=0.jpg" mode="widthFix"
 			 class="bgc" :style="{'display':bao==0?'block':'none'}"></image>
@@ -20,14 +20,19 @@
 				</view>
 			</view>
 			<view class="jiaru">
-				<!-- -->
-				<view class="s-top" >
-					<text class="iconfont icon-shoucang red"></text>
-					<text class="red">已收藏</text>
-				</view>
 				<view class="s-bottom" @click="jiabao(item.id,item)">
-					<text class="iconfont icon-shubao" :class="item.sb?'red':''"></text>
-					<text :class="item.sb?'red':''">{{item.sb?"已加入":"加入"}}</text>
+					<text class="iconfont icon-shanchu" ></text>
+					<text>删除</text>
+				</view>
+			</view>
+		</view>
+		<view class="foot">
+			<view class="foot-center">
+				<view class="zanbu">
+					暂不可借阅
+				</view>
+				<view class="jieshu">
+					借书
 				</view>
 			</view>
 		</view>
@@ -47,16 +52,34 @@
 			}
 		},
 		computed: {
+			
 			...mapState({
 				bao: 'bao'
+			}),
+			...mapState({
+				carts: 'carts'
 			})
 		},
-		onLoad() {
-		},
+		
 		methods: {
+			...mapMutations({
+				clearCarts: "clearCarts"
+			}),
 			...mapMutations({
 				clearBao: "clearBao"
 			}),
+			...mapMutations({
+				addCarts: "addCarts"
+			}),
+			shoucang(id, item) {
+				if(item.sc==true){
+					this.clearCarts(item)
+					item.sc=false
+				}else{
+					this.addCarts(item)
+					item.sc=true
+				}
+			},
 			jiabao(id, item) {
 				this.clearBao(item)
 			}
@@ -153,24 +176,60 @@
 			}
 
 			.jiaru {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
 				width: 90rpx; // background-color: pink;
 				text-align: center;
 				font-size: 11px;
 				border-left: 1px dashed #eee;
 				padding-left: 10px;
 				color: #808080;
-
-				.s-top,
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 				.s-bottom {
 					display: flex;
 					flex-direction: column;
+					
 				}
 			}
 
 
+		}
+		.foot{
+			width: 100%;
+			// height: 50px;
+			// background-color: pink;
+			position: fixed;
+            bottom:20px;
+			padding: 0;
+			left: 0;
+			.foot-center{
+				display: flex;
+				justify-content: center;
+				width:280px;
+				margin: 0 auto;
+				border-radius: 20px;
+				border: 1px solid #eee;
+				.zanbu{
+					// background-color: red;
+					width: 140px;
+					text-align: center;
+					color: #19CAAD;
+					font-size: 13px;
+					padding: 8px 0;
+					border-top-left-radius: 20px;
+					border-bottom-left-radius: 20px;
+				}
+				.jieshu{
+					background-color:  #19CAAD;
+					width: 140px;
+					text-align: center;
+					color: #fff;
+					font-size: 13px;
+					padding: 8px 0;
+					border-top-right-radius: 20px;
+					border-bottom-right-radius: 20px;
+				}
+			}
 		}
 
 	}

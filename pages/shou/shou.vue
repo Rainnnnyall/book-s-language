@@ -1,6 +1,6 @@
 <template>
 	<view class="information">
-		<!-- #ifdef MP-ALIPAY|MP-WEIXIN -->
+		<!-- #ifdef MP-ALIPAY|MP-WEIXIN|H5 -->
 		<view class="kong">
 			<image src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2680786358,1010619428&fm=26&gp=0.jpg" mode="widthFix"
 			 class="bgc" :style="{'display':carts==0?'block':'none'}"></image>
@@ -25,7 +25,7 @@
 					<text class="iconfont icon-shoucang red"></text>
 					<text class="red">已收藏</text>
 				</view>
-				<view class="s-bottom">
+				<view class="s-bottom" @click="bao(item.id,item)">
 					<text class="iconfont icon-shubao" :class="item.sb?'red':''"></text>
 					<text :class="item.sb?'red':''">{{item.sb?"已加入":"加入"}}</text>
 				</view>
@@ -59,8 +59,23 @@
 			...mapMutations({
 				clearCarts: "clearCarts"
 			}),
+			...mapMutations({
+				clearBao: "clearBao"
+			}),
+			...mapMutations({
+				addBao: "addBao"
+			}),
 			shoucang(id, item) {
 				this.clearCarts(item)
+			},
+			bao(id, item) {
+				if(item.sb==true){
+					this.clearBao(item)
+					item.sb=false
+				}else{
+					this.addBao(item)
+					item.sb=true
+				}
 			}
 		}
 	}

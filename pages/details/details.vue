@@ -75,7 +75,7 @@
 					<text @click="speack(item.id)"><text class="iconfont icon-pinglun"></text>评论</text>
 				</view>
 			</view>
-			<input type="text" value="" :focus="Boolean" confirm-type="string" placeholder="请输入评论" v-model="value" />
+			<input type="text" value="" :focus="Boolean" confirm-type="string" placeholder="请输入评论" />
 			<button type="primary" class="btn" size="mini" form-type="submit" open-type="getUserInfo" @getuserinfo="getuserinfo">发送</button>
 		</view>
 

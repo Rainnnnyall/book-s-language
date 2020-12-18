@@ -9,6 +9,7 @@
 		<navigator url="../xunzhang/xunzhang">去勋章</navigator>
 		<navigator url="../xiaofei/xiaofei">去消费</navigator>
 		<navigator url="../about/about">关于我们</navigator>
+		<navigator url="../shubao/shubao">去书包</navigator>
 	</view>
 	
 </template>

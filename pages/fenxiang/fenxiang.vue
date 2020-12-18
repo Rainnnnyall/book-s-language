@@ -14,7 +14,12 @@
 			<view class="audio-wrapper">
 				<audio id="myVideo" :src="neirong.ypurl" class="hidden" @timeupdate="timeupdate" ref="video" @loadedmetadata="loadedmetadata"
 				 controls="false"></audio>
+				 <!-- #ifdef MP-ALIPAY|MP-WEIXIN -->
 				<view class="audio-number">{{timer}}</view>
+				<!-- #endif -->
+				<!-- #ifdef H5 -->
+				<view class="audio-number">00:00</view>
+				<!-- #endif -->
 				<!-- @change="sliderChange" -->
 				<slider class="audio-slider" @change="sliderChange" @changing="sliderChanging" block-size="16" :min="0" :max="duration"
 				 :value="currentTime" activeColor="#19CAAD" @touchstart="lock= true" @touchend="lock = false" />
@@ -144,7 +149,12 @@
 			})
 		},
 		created() {
+			 // #ifdef MP-ALIPAY|MP-WEIXIN
 			this.audioContext = uni.createAudioContext('myVideo')
+			//#endif
+			 // #ifdef H5
+			this.audioContext = uni.createInnerAudioContext('myVideo')
+			//#endif
 		},
 		onLoad(options) {
 			this.id = options.id
@@ -168,9 +178,13 @@
 			}),
 			play() {
 				if (this.isPlay) {
+					// #ifdef MP-ALIPAY|MP-WEIXIN
 					this.audioContext.play()
+					// #endif
 				} else {
+					// #ifdef MP-ALIPAY|MP-WEIXIN
 					this.audioContext.pause()
+					// #endif
 				}
 				this.isPlay = !this.isPlay
 			},
@@ -191,7 +205,9 @@
 
 			// 拖动进度条
 			sliderChange(data) {
+				// #ifdef MP-ALIPAY|MP-WEIXIN
 				this.audioContext.seek(data.detail.value)
+				// #endif
 			},
 
 			//拖动中
@@ -220,7 +236,10 @@
 					}
 				}
 				console.log(this.neirong, "xxxx");
-				this.htmlNodes = parse(this.neirong.twhhjs)
+				
+				if(this.neirong.twhhjs!= null){
+				    this.htmlNodes = parse(this.neirong.twhhjs)
+				}
 			},
 			async getShu() {
 				let result = await myRequestPost("/portal.php", {
@@ -269,11 +288,6 @@
 				console.log(id, shu, "xxxxxx");
 			},
 			baobao(id,shu) {
-				// for (var i = 0; i < this.shuji.length; i++) {
-				// 	if (id == this.shuji[i].id) {
-				// 		this.shuji[i].sb = !this.shuji[i].sb
-				// 	}
-				// }
 				for (var i = 0; i < this.shuji.length; i++) {
 					if (id == this.shuji[i].id) {
 						var shu = this.shuji[i]

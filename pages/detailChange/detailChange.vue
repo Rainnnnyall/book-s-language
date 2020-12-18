@@ -7,12 +7,12 @@
 			</view>
 			<!-- 图片 -->
 			<view class="center">
-				<image :src="`https://uptownlet.com/appendix/image.jspx?id={{list.fm}}`" mode="widthFix"></image>
+				<image :src="`https://uptownlet.com/appendix/image.jspx?id=${list.fm}`" mode="widthFix"></image>
 			</view>
 			<!-- 分享/MP3 -->
 			<view class="right">
-				<icon class="iconfont iconfenxiang"></icon>
-				<icon class="iconfont iconicon-" :class="list.lx=='2CT07MLO'?'show':''"></icon>
+				<text class="iconfont icon-zhuanfa"></text>
+				<!-- <text class="iconfont iconicon-" :class="list.lx=='2CT07MLO'?'show':''"></text> -->
 			</view>
 		</view>
 		<!-- 出版信息 -->
@@ -33,7 +33,7 @@
 		<!-- 简介和评论 -->
 		<view class="zznrtwjj jianting1">
 			<!-- #ifdef MP-WEIXIN|H5|APP-PLUS -->
-			<rich-text class="tjy" :nodes="list.zznrtwjj"></rich-text>
+			<rich-text class="tjy" :nodes="content"></rich-text>
 			<!-- #endif -->
 			<text :class="list.zznrtwjj!=''||list.zzjs==''?'cang':'sh'">
 				<text class="bo">{{list.zzjs}}</text>
@@ -50,7 +50,7 @@
 		<view class="syqpl jianting2">
 			<view id="header">书友圈</view>
 			<view class="inp">
-				<input placeholder="请输入评论"  />
+				<input placeholder="请输入评论" />
 			</view>
 			<view class="comments" v-for="item in commentsDetail" :key="item.id">
 				<view class="tou">
@@ -68,7 +68,7 @@
 						</view>
 					</view>
 					<view class="dzhf">
-						<text class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs" :class="item.zt==1?'red':''">{{item.dzs}}
+						<text class="zan" @click="dianzan(item.dzs,item.id)" v-model="item.dzs" :class="item.zt==0?'red':''">{{item.dzs}}
 							<text class="iconfont icon-zan"></text>
 						</text>
 						<text class="zan"><text class="iconfont icon-pinglun"></text>评论</text>
@@ -79,14 +79,14 @@
 		<view class="tuijian">
 			<text id="header">精品推荐</text>
 			<view class="tjsj-all">
-				<view class="tjsj-one" v-for="item2 in list2.data" :key="item2.id" @click="godetails(item2)">
-					<image :src="`https://uptownlet.com/appendix/image.jspx?id={{item2.tp}}`" mode=""></image>
+				<view class="tjsj-one" v-for="item2 in list2" :key="item2.id" @click="godetails(item2)">
+					<image :src="`https://uptownlet.com/appendix/image.jspx?id=${item2.tp}`"></image>
 					<text>{{item2.bt}}</text>
 				</view>
 			</view>
 		</view>
-		
-		
+
+
 		<!-- 底部 -->
 		<view class="footer">
 			<button>
@@ -97,8 +97,13 @@
 </template>
 
 <script>
+	// 解决富文本图片太大
 	import {
-		myRequestGet
+		formatRichText
+	} from '@/utils/format.js'
+	import parse from "@/utils/htmlparser.js"
+	import {
+		myRequestPost
 	} from '@/utils/zgrequest.js'
 	export default {
 		data() {
@@ -112,6 +117,7 @@
 				gao: 0,
 				value: '',
 				cont: {},
+				content:[]
 			}
 		},
 		onLoad(options) {
@@ -125,31 +131,53 @@
 
 			/* 获取数据库信息 */
 			async getSwiper(options) {
-				let result = await myRequestGet(
-					`/portal.php?resid=QueryBookAction.qmbook&rowid=${options.id}&yhid=c935e06c19dd4a6cb5dcc500d3af21dd`)
+				let result = await myRequestPost("/portal.php", {
+					resid: "QueryBookAction.qmbook",
+					rowid: options.id,
+					yhid: "c935e06c19dd4a6cb5dcc500d3af21dd"
+				})
 				if (result != 0) {
 					this.list = result.data
+					// 拿到的内容为 我们 需要渲染的 富文本内容
+					// 处理富文本 图片过大
+					this.content = formatRichText(this.list.zznrtwjj)
+					console.log(this.content, "ssssssss");
+					this.htmlNodes = parse(this.content)
 				}
-				let result1 = await myRequestGet(
-					`/portal.php?resid=LyplAction.lyplList&tid=${options.id}&openid=ouJlZ5CQg49u6u6ODEcn28BckzmU&pllx=1X7FJT1B&yhid=c935e06c19dd4a6cb5dcc500d3af21dd`
+				console.log(this.list ,"ssacsdcs");
+				let result1 = await myRequestPost(
+					"/portal.php", {
+						resid: "LyplAction.lyplList",
+						tid: options.id,
+						openid: "ouJlZ5CQg49u6u6ODEcn28BckzmU",
+						pllx: "1X7FJT1B",
+						yhid: "c935e06c19dd4a6cb5dcc500d3af21dd"
+					}
 				)
 				if (result1 != 0) {
 					this.commentsDetail = result1.data
 				}
-				let result2 = await myRequestGet(
-					`/portal.php?resid=SbAction.jptj&lx=2M8QUIME&tsid=3e131263d90a440b97c2f198443c25af`
+				console.log(this.commentsDetail,"\\\\");
+				
+				let result2 = await myRequestPost(
+					"/portal.php", {
+						resid: "SbAction.jptj",
+						lx: "2M8QUIME",
+						tsid: "3e131263d90a440b97c2f198443c25af"
+					}
 				)
 				if (result2 != 0) {
-					this.list2 = result2.data
+					this.list2 = result2.data.data
 				}
 				// console.log(this.list, "11111")
-				console.log(this.commentsDetail, "33333")
+				console.log(this.list2, "124465768i7")
 				// console.log(this.list2, 5555555)
 			},
 			/* 简介点击事件 */
 			dianji() {
 				this.flag = true;
 				uni.createSelectorQuery().select(".jianting1").boundingClientRect(function(res) {
+					console.log("标签获取====>", typeof(res.top))
 					uni.pageScrollTo({
 						scrollTop: res.top,
 						duration: 300
@@ -284,9 +312,11 @@
 		}
 
 		.center {
+			// width: 100%;
+			margin: 0 auto;
 			image {
-				width: 130px;
-				margin-left: -30px;
+				width: 150px;
+				margin-left: 0 auto;
 			}
 		}
 
@@ -322,7 +352,7 @@
 		display: flex;
 		flex-direction: column;
 		text-align: center;
-
+        margin-top: 5px;
 		.sm {
 			font-size: 15px;
 			font-weight: 500;
@@ -421,13 +451,15 @@
 		box-sizing: border-box;
 		border-top: 5px solid #F5F5F5;
 		border-bottom: 5px solid #F5F5F5;
-        .inp{
+
+		.inp {
 			width: 300px;
 			border-bottom: 1px solid #e5e5e5;
 			padding-bottom: 15px;
 			margin: 0 auto;
 			margin-bottom: 10px;
-			input{
+
+			input {
 				width: 280px;
 				margin: 0 auto;
 				border: 1px solid #eee;
@@ -440,6 +472,7 @@
 				padding-left: 10px;
 			}
 		}
+
 		.comments {
 
 			border-bottom: 1px solid #E5E5E5;
@@ -516,26 +549,30 @@
 
 		}
 	}
+
 	/* 精品书推荐 */
 	.tuijian {
-		margin-bottom: 100px;
-	    padding: 0 10px;
+		
+		padding: 10px 10px 100px;
 		box-sizing: border-box;
+		/* #ifdef H5 */
+		margin-bottom: 100px;
+		/* #endif */
 		.tjsj-all {
 			display: flex;
-			justify-content: space-around;
-	
+			justify-content: space-between;
+            height: 200px;
 			.tjsj-one {
 				width: 105px;
 				margin-top: 5px;
-	            
+
 				image {
 					width: 100%;
 					height: 120px;
 					display: block;
 					border-radius: 10px;
 				}
-	
+
 				text {
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
@@ -548,7 +585,7 @@
 			}
 		}
 	}
-	
+
 	// 足部
 	.footer {
 		width: 100%;
@@ -559,7 +596,7 @@
 		background-color: #FFFFFF;
 		position: fixed;
 		bottom: 0;
-	
+
 		button {
 			width: 340px;
 			color: #fff;
@@ -572,7 +609,11 @@
 			color: #fff;
 			font-size: 14px;
 			margin-bottom: 5px;
+			// margin-top: 10px;
+			/* #ifdef MP-ALIPAY */
+			margin-left: 17px;
+			/* #endif */
 		}
-	
+
 	}
 </style>

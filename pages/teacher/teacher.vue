@@ -283,7 +283,10 @@
 				font-size: 26rpx;
 				padding: 0 20rpx;
 				margin-top: 30rpx;
-
+				/* #ifdef H5 */
+				margin-top: 0;
+				padding-top:15px ;
+				/* #endif */ 
 				text:nth-child(1) {
 					font-weight: bold;
 					margin-right: 40rpx;
