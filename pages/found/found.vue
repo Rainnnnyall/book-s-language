@@ -1,7 +1,11 @@
 <template>
 	<view class="content">
 		<view class="nav">
-			<view class="lo" v-for="(item,i) in arr" :key="i">{{item.name}}</view>
+			<view class="lo">首页</view>
+			<view class="lo" @click="go('/pages/ClassifiedBooks/ClassifiedBooks')">分类选书</view>
+			<view class="lo" @click="go('/pages/intro/intro')">名师导读</view>
+			<view class="lo" @click="go('/pages/read/read')">阅读评测</view>
+			<view class="lo" @click="memBuy()">成为会员</view>
 		</view>
 
 		<view class="search">
@@ -33,7 +37,7 @@
 
 			<view class="recom-body">
 				<scroll-view scroll-x style=" white-space: nowrap;">
-					<view class="recom-card" v-for="(item,i) in newlist" :key="i">
+					<view class="recom-card" v-for="(item,i) in newlist" :key="i" @click="godetail(item.id)">
 
 						<view class="recom-incard">
 							<image :src="`${imgUrl+item.data.tp}`"></image>
@@ -46,7 +50,7 @@
 								{{item.rd}}
 							</view>
 						</view>
-						<view class="hide recom-jj">{{item.zy}}</view>
+						<text class="recom-jj">{{item.zy}}</text>
 					</view>
 				</scroll-view>
 
@@ -64,7 +68,7 @@
 				<view class="bg"></view>
 				<scroll-view scroll-x style=" white-space: nowrap;">
 
-					<view class="hot-card" v-for="(item,i) in hotlist" :key="i">
+					<view class="hot-card" v-for="(item,i) in hotlist" :key="i" @click="gohosted(item.id)">
 						<view class="">
 							{{item.bt}}
 						</view>
@@ -102,37 +106,39 @@
 		<view class="title">
 			<view class="title-nav">
 				<text class="bold">全部分类</text>
-				<text class="rank">纸享热度</text>
-				<text class="rank">豆瓣</text>
+				<text class="rank" @click="hotrank" :class="flag?'modify':''">纸享热度</text>
+				<text class="rank" @click="peanrank" :class="flag?'modify':''">豆瓣</text>
 			</view>
 			<view class="title-body">
 				<view class="title-ev">
-					<view v-for="(item,i) in booklist" :key="i" class="title-card">
-						<image :src="`${imgUrl+item.data.tp}`" class="title-img"></image>
-						<view class="title-jj">
-							<view class="hide" style="font-size: 15px;">{{item.bt}}</view>
-							<view style="font-size: 13px; color: #969896;">
-								<text style="color: red;">作者：</text>
-								{{item.data.ly}}</view>
-							<view class="title-pri">
-								<view class="iconfont icon-huo" style="display: inline; color: red;"></view>
-								<text>
-									{{item.rd}}
-								</text>
-								<view class="iconfont icon-sheng" style="display: inline; color: orange;"></view>
-								<view class="iconfont icon-renmingbiriyuan" style="display: inline;vertical-align: center; "></view>
-
-								<text>{{item.yj}}</text>
+					<view v-for="(item,i) in shuji" :key="i" class="title-card" >
+						<view @click="godetail(item.id)">
+							<image :src="`${imgUrl+item.data.tp}`" class="title-img"></image>
+							<view class="title-jj">
+								<view class="hide" style="font-size: 15px;">{{item.bt}}</view>
+								<view style="font-size: 13px; color: #969896;">
+									<text style="color: red;">作者：</text>
+									{{item.data.ly}}</view>
+								<view class="title-pri">
+									<view class="iconfont icon-huo" style="display: inline; color: red;"></view>
+									<text>
+										{{item.rd}}
+									</text>
+									<view class="iconfont icon-sheng" style="display: inline; color: orange;"></view>
+									<view class="iconfont icon-renmingbiriyuan" style="display: inline;vertical-align: center; "></view>
+							
+									<text>{{item.yj}}</text>
+								</view>
 							</view>
 						</view>
-						<view class="rate">
-							<view>
+						<view class="rate" >
+							<view @click="shoucang(item.id,item)" :class="item.sc?'modify':''">
 								<view class="iconfont icon-shoucang"></view>
-								<text>收藏</text>
+								<text>{{item.sc?"已收藏":"收藏"}}</text>
 							</view>
-							<view @click="addBag(i,item)" :class="{'modify':item.sc}" >
+							<view  @click="baobao(item.id,item)" :class="item.sb?'modify':''">
 								<view class="iconfont icon-shubao"></view>
-								<text>加书包</text>
+								<text>{{item.sb?"已加入":"加书包"}}</text>
 							</view>
 						</view>
 					</view>
@@ -149,44 +155,43 @@
 	import {
 		myRequestGet
 	} from '@/utils/zgrequest.js'
-
+	// import store from '../../store/index.js'
 
 	import uniSearchBar from '../../components/uni-ui/uni-search-bar/uni-search-bar.vue'
+
+	import {
+		mapState,
+		mapMutations,
+		mapGetters
+	} from 'vuex'
+	// const app = new Vue({
+	// 	store
+	// 	})
+
 	export default {
+
 		data() {
 			return {
 				page: 1,
 				page1: 1,
 				newlist: [],
-				booklist: [],
+				shuji: [],
 				hotlist: [],
-				isselect:false,
+				isselect: false,
 				bt: "",
-				arr: [{
-						name: '首页',
-					},
-					{
-						name: '分类选书',
-					},
-					{
-						name: '名师导读',
-					},
-					{
-						name: '阅读评测',
-					},
-					{
-						name: '成为会员'
-					}
-				],
 				flag: true,
 				imgUrl: "https://uptownlet.com/appendix/image.jspx?id="
 			}
 		},
 		onLoad() {
 			this.getRecom();
-			this.getBookList();
+			
 			this.getHotList();
 
+		},
+			
+		onShow(){
+			this.getBookList();
 		},
 		onReachBottom() {
 			console.log("xxxxxxxxxxxxxxx");
@@ -197,28 +202,56 @@
 				duration: 300
 			});
 		},
-		computed: {
-			age() {
-				return this.num
-			}
-		},
 		methods: {
+			...mapMutations({
+				addCarts: 'addCarts'
+			}),
+			...mapMutations({
+				addBao:'addBao'
+			}),
+			...mapMutations({
+				clearCarts: "clearCarts"	
+			}),
+			...mapMutations({
+				clearBao:'clearBao'
+			}),
 			async getRecom() {
 				let result = await myRequestGet(
-					'resid=SdAction.zntjsd', {
+					'/portal.php', {
+						resid: 'SdAction.zntjsd',
 						page: this.page1
 					}
 				);
-				this.newlist = result;
+				this.newlist = result.data;
 			},
 			async getBookList() {
 				let result2 = await myRequestGet(
-					'resid=SdAction.syts&sxtj=ZXRD&hyid=84f5b7553fa74b6dbd2e7fdc6bd53984&yhid=84f5b7553fa74b6dbd2e7fdc6bd53984', {
+					'/portal.php', {
+						resid: 'SdAction.syts',
+						sxtj: 'ZXRD',
+						hyid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
+						yhid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
 						page: this.page
 					});
-				this.booklist = [...result2];
-
-				console.log(result2);
+				this.shuji = [...result2.data];
+				
+				for (var i = 0; i < this.shuji.length; i++) {
+					for (var j = 0; j < this.carts.length; j++) {
+						if (this.shuji[i].id == this.carts[j].id) {
+							this.shuji[i].sc = true
+						}
+					}
+				}
+				
+				for (var i = 0; i < this.shuji.length; i++) {
+					for (var j = 0; j < this.bao.length; j++) {
+						if (this.shuji[i].id == this.bao[j].id) {
+							this.shuji[i].sb = true;
+						}
+					}
+				}
+				
+				console.log(result2.data);
 			},
 			nextRecom() {
 				console.log("1111111111111")
@@ -227,32 +260,143 @@
 			},
 			async getHotList() {
 				let result3 = await myRequestGet(
-					'resid=SdAction.hotsd&yhid=84f5b7553fa74b6dbd2e7fdc6bd53984', {
+					'/portal.php', {
+						resid: 'SdAction.hotsd',
+						yhid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
 						page: 1
 					});
-				this.hotlist = result3;
+				this.hotlist = result3.data;				
+				console.log(result3.data, "2222222");
 
-				console.log(result3, "2222222");
 			},
-			addBag(n,it){
+			async gethotrankList() {
+				let result4 = await myRequestGet(
+					'/portal.php', {
+						resid: 'SdAction.syts',
+						yhid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
+						hyid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
+						page: 2,
+						sxtj:'ZXRD'
+					});
+				this.shuji = result4.data;				
+				console.log(result4.data, "22222224444444444");
+			
+			},
+			async getpeanrankList() {
+				let result5 = await myRequestGet(
+					'/portal.php', {
+						resid: 'SdAction.syts',
+						yhid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
+						hyid: '84f5b7553fa74b6dbd2e7fdc6bd53984',
+						page: 2,
+						sxtj:'DBPF'
+					});
+				this.shuji = result5.data;				
+				console.log(result5.data, "2222222555555");
+			
+			},
+		
+			// addToBag(n, book) {
+			// 	book.sc = !book.sc;
+			// 	if (book.sc == true) {
+			// 		console.log(book);
+			// 		this.addBag(book);
+			// 	} else {
+			// 		this.deletebook(book);
+			// 	}
+			// },
+			shoucang(id, shu) {
+					for (var i = 0; i < this.shuji.length; i++) {
+						if (id == this.shuji[i].id) {
+							var shu = this.shuji[i]
+							if (this.shuji[i].sc) {
+								this.clearCarts(shu)
+							} else {
+								this.addCarts(shu)
+							}
+			
+							this.shuji[i].sc = !this.shuji[i].sc
+							 uni.setStorageSync("shuji", this.shuji)
+						}
+					}
+					console.log(id, shu, "xxxxxx");
+				},
+				baobao(id,shu) {
+					for (var i = 0; i < this.shuji.length; i++) {
+						if (id == this.shuji[i].id) {
+							var shu = this.shuji[i]
+							if (this.shuji[i].sb) {
+								this.clearBao(shu)
+							} else {
+								this.addBao(shu)
+							}
+					
+							this.shuji[i].sb = !this.shuji[i].sb
+							 uni.setStorageSync("shuji", this.shuji)
+						}
+					}
+					console.log(id, shu, "shubaoshubao");
+				},
+			
+			// addBag(n,it){
+
+			// 	console.log(n,it,"111111111111");
+			// 	it.sc = !it.sc;
+			// 	if(it.sc == true){
+			// 		uni.$emit("sendbook", it);
+			// 	}else{
+			// 		this.$emit("func",n);
+			// 	}
+
+			// },
+			
+			
+			define() {
+				uni.navigateTo({
+					url: '/pages/choose/choose'
+				})
+			},
+			memBuy() {
+				uni.navigateTo({
+					url: '/pages/member/member'
+				})
+			},
+			go(path) {
+				uni.navigateTo({
+					url: path
+				})
+			},
+			godetail(id){
+				uni.navigateTo({
+					url:`/pages/details/details?id=${id}`
+				})
 				
-				console.log(n,it,"111111111111");
-				it.sc = !it.sc;
-				uni.$emit("sendbook", "你好，bag")
 			},
-			define(){
+			gohosted(id){
 				uni.navigateTo({
-					url:'/pages/choose/choose'
+					url:`/pages/hostd/hostd?id=${id}`
 				})
 			},
-			memBuy(){
-				uni.navigateTo({
-					url:'/pages/member/member'
-				})
+			hotrank(){
+				this.flag = !this.flag;
+				this.gethotrankList();
+			},
+			peanrank(){
+				this.flag = !this.flag;
+				this.getpeanrankList();
 			}
+			
 		},
 		components: {
 			uniSearchBar
+		},
+		computed: {
+			...mapState({
+				carts: 'carts'
+			}),
+			...mapState({
+				bao:'bao'
+			})
 		}
 
 	}
@@ -262,7 +406,7 @@
 	@import '../../static/icon/iconfont.css';
 
 	.content {
-		padding: 5px;
+		padding: 10rpx;
 		flex-direction: column;
 
 		.nav {
@@ -279,12 +423,12 @@
 		swiper {
 			swiper-item {
 				image {
-					width: 365.2px;
-					height: 150px;
+					width: 730.4rpx;
+					height: 300rpx;
 				}
 			}
 
-			margin-bottom: 20px;
+			margin-bottom: 40rpx;
 		}
 
 		.recom-nav {
@@ -302,7 +446,7 @@
 				width: 430rpx;
 				height: 400rpx;
 				border-radius: 10px;
-				box-shadow: 0 0 15px -5px;
+				box-shadow: 0 0 20rpx #E5E5E5;
 				display: inline-block;
 				position: relative;
 
@@ -315,17 +459,30 @@
 
 					.recom-fire {
 						font-size: 14px;
-						color: #808080;
-						padding: 5px 10px 5px 10px;
+						color: #999999;
+						padding: 4px 10px 4px 10px;
 						margin-left: -5px;
-						width: 60px;
-						border-radius: 0px 20px 20px 0px;
+						margin-top: 10rpx;
+						width: 120rpx;
+						border-radius: 0px 50rpx 50rpx 0px;
 						background-color: #E9E9E9;
 
 					}
 
 				}
-
+				.recom-jj{
+					margin-top: 15px;
+					width: 420rpx;
+					height: 80rpx;
+					color: #ABABAB;
+					font-size: 14px;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					display: -webkit-box;
+					-webkit-line-clamp: 2;
+					-webkit-box-orient: vertical;
+					
+				}
 				.recom-incard {
 
 					margin-top: -30px;
@@ -341,16 +498,7 @@
 
 				}
 
-				.recom-jj {
-					margin-top: 15px;
-					width: 400rpx;
-					height: 60px;
-					background-color: yellow;
-					word-wrap: break-word;
-					font-size: 14px;
-					color: #969896;
-
-				}
+				
 			}
 
 		}
@@ -380,7 +528,7 @@
 					width: 430rpx;
 					height: 620rpx;
 					border-radius: 10px;
-					box-shadow: 0 0 15px -5px;
+					box-shadow: 0 0 20rpx #E5E5E5;
 					display: inline-block;
 
 					.hot-body {
@@ -425,14 +573,17 @@
 			}
 
 		}
-		.modify{
-			view{
-				color:red;
+
+		.modify {
+			view {
+				color: red;
 			}
-			text{
+
+			text {
 				color: red;
 			}
 		}
+
 		.hide {
 
 			text-overflow: ellipsis;
